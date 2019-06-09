@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',['website'=>'Laravel']);
+});
+
+Route::view('view','welcome',['website'=>'LaravelWP']);
+
+Route::get('hello',function (){
+   return 'Hello ,welcome to LaravelAcademy.org';
 });

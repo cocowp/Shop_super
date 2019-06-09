@@ -20,6 +20,7 @@ class ComposerStaticInit80a1243b6d2ffe5c10d9de0e371aa223
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
+        'f06f62310a8380be39b66533e83129a0' => __DIR__ . '/..' . '/caffeinated/modules/src/Support/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -119,6 +120,7 @@ class ComposerStaticInit80a1243b6d2ffe5c10d9de0e371aa223
         array (
             'Cron\\' => 5,
             'Carbon\\' => 7,
+            'Caffeinated\\Modules\\' => 20,
         ),
         'B' => 
         array (
@@ -317,6 +319,10 @@ class ComposerStaticInit80a1243b6d2ffe5c10d9de0e371aa223
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'Caffeinated\\Modules\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/caffeinated/modules/src',
+        ),
         'BeyondCode\\DumpServer\\' => 
         array (
             0 => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src',
@@ -376,6 +382,7 @@ class ComposerStaticInit80a1243b6d2ffe5c10d9de0e371aa223
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Model\\Test' => __DIR__ . '/../..' . '/app/Model/Test.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -386,6 +393,43 @@ class ComposerStaticInit80a1243b6d2ffe5c10d9de0e371aa223
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
         'BeyondCode\\DumpServer\\RequestContextProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/RequestContextProvider.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleDisableCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleDisableCommand.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleEnableCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleEnableCommand.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleListCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleListCommand.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleMigrateCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleMigrateCommand.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleMigrateRefreshCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleMigrateRefreshCommand.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleMigrateResetCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleMigrateResetCommand.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleMigrateRollbackCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleMigrateRollbackCommand.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleOptimizeCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleOptimizeCommand.php',
+        'Caffeinated\\Modules\\Console\\Commands\\ModuleSeedCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Commands/ModuleSeedCommand.php',
+        'Caffeinated\\Modules\\Console\\GeneratorCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/GeneratorCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeControllerCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeControllerCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeJobCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeJobCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeMiddlewareCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeMiddlewareCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeMigrationCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeMigrationCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeModelCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeModelCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeModuleCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeModuleCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakePolicyCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakePolicyCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeProviderCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeProviderCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeRequestCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeRequestCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeSeederCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeSeederCommand.php',
+        'Caffeinated\\Modules\\Console\\Generators\\MakeTestCommand' => __DIR__ . '/..' . '/caffeinated/modules/src/Console/Generators/MakeTestCommand.php',
+        'Caffeinated\\Modules\\Contracts\\Repository' => __DIR__ . '/..' . '/caffeinated/modules/src/Contracts/Repository.php',
+        'Caffeinated\\Modules\\Database\\Migrations\\Migrator' => __DIR__ . '/..' . '/caffeinated/modules/src/Database/Migrations/Migrator.php',
+        'Caffeinated\\Modules\\Exceptions\\ModuleNotFoundException' => __DIR__ . '/..' . '/caffeinated/modules/src/Exceptions/ModuleNotFoundException.php',
+        'Caffeinated\\Modules\\Facades\\Module' => __DIR__ . '/..' . '/caffeinated/modules/src/Facades/Module.php',
+        'Caffeinated\\Modules\\Middleware\\IdentifyModule' => __DIR__ . '/..' . '/caffeinated/modules/src/Middleware/IdentifyModule.php',
+        'Caffeinated\\Modules\\ModulesServiceProvider' => __DIR__ . '/..' . '/caffeinated/modules/src/ModulesServiceProvider.php',
+        'Caffeinated\\Modules\\Providers\\BladeServiceProvider' => __DIR__ . '/..' . '/caffeinated/modules/src/Providers/BladeServiceProvider.php',
+        'Caffeinated\\Modules\\Providers\\ConsoleServiceProvider' => __DIR__ . '/..' . '/caffeinated/modules/src/Providers/ConsoleServiceProvider.php',
+        'Caffeinated\\Modules\\Providers\\GeneratorServiceProvider' => __DIR__ . '/..' . '/caffeinated/modules/src/Providers/GeneratorServiceProvider.php',
+        'Caffeinated\\Modules\\Providers\\RepositoryServiceProvider' => __DIR__ . '/..' . '/caffeinated/modules/src/Providers/RepositoryServiceProvider.php',
+        'Caffeinated\\Modules\\Repositories\\LocalRepository' => __DIR__ . '/..' . '/caffeinated/modules/src/Repositories/LocalRepository.php',
+        'Caffeinated\\Modules\\Repositories\\Repository' => __DIR__ . '/..' . '/caffeinated/modules/src/Repositories/Repository.php',
+        'Caffeinated\\Modules\\RepositoryManager' => __DIR__ . '/..' . '/caffeinated/modules/src/RepositoryManager.php',
+        'Caffeinated\\Modules\\Support\\AuthServiceProvider' => __DIR__ . '/..' . '/caffeinated/modules/src/Support/AuthServiceProvider.php',
+        'Caffeinated\\Modules\\Support\\ServiceProvider' => __DIR__ . '/..' . '/caffeinated/modules/src/Support/ServiceProvider.php',
+        'Caffeinated\\Modules\\Traits\\MigrationTrait' => __DIR__ . '/..' . '/caffeinated/modules/src/Traits/MigrationTrait.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
         'Carbon\\CarbonInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterface.php',
