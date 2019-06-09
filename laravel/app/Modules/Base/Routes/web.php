@@ -17,4 +17,9 @@ Route::group(['prefix' => 'base'], function () {
     });
 
     Route::get('/index','IndexController@index');
+
+    Route::get('/welcome',function (){
+        return view('base::index.welcome');
+    });
+
 });

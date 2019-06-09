@@ -8,10 +8,12 @@
  */
 namespace App\Modules\Base\Http\Controllers;
 
-class IndexController
+use App\Http\Controllers\Controller;
+
+class IndexController extends Controller
 {
    public function index()
    {
-       echo "3232";
+       return view('base::index.index');
    }
 }
