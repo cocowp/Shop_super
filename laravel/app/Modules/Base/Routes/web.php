@@ -21,5 +21,7 @@ Route::group(['prefix' => 'base'], function () {
     Route::get('/welcome',function (){
         return view('base::index.welcome');
     });
-
+    //登录
+    Route::get('/login','LoginController@login');
+    Route::post('/login_do','LoginController@login_do');
 });
