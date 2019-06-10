@@ -22,4 +22,6 @@ Route::group(['prefix' => 'base'], function () {
         return view('base::index.welcome');
     });
 
+    Route::get('/alist','AdminController@alist');
+
 });
