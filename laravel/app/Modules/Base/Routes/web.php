@@ -22,6 +22,12 @@ Route::group(['prefix' => 'base'], function () {
         return view('base::index.welcome');
     });
 
-    Route::get('/alist','AdminController@alist');
-
+    Route::get('/admin_list','Member_manageController@lists');
+    Route::get('/admin_editing','Member_manageController@editing');
+    Route::post('/admin_update','Member_manageController@updateinfo');
+    Route::get('/admin_delete','Member_manageController@deleteinfo');
+    Route::post('/admin_adddo','Member_manageController@adddo');
+    Route::get('/admin_add',function (){
+       return view('base::memberage.add');
+    });
 });
