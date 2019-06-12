@@ -30,4 +30,8 @@ Route::group(['prefix' => 'base'], function () {
     Route::get('/admin_add',function (){
        return view('base::memberage.add');
     });
+
+    Route::get('/catlist','Goodscategory_manageController@lists');
+    Route::get('/search_child','Goodscategory_manageController@search_child');
+    Route::get('/cat_delete','Goodscategory_manageController@cat_delete');
 });
