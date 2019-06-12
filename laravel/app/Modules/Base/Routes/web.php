@@ -30,12 +30,9 @@ Route::group(['prefix' => 'base'], function () {
     Route::get('/admin_add',function (){
        return view('base::memberage.add');
     });
-
-<<<<<<< HEAD
     Route::get('/catlist','Goodscategory_manageController@lists');
     Route::get('/search_child','Goodscategory_manageController@search_child');
     Route::get('/cat_delete','Goodscategory_manageController@cat_delete');
-=======
     
 	Route::any('moneyoff_acticity','Active_manageController@moneyoff_acticity');
 	Route::any('discount_coupon','Active_manageController@discount_coupon');
@@ -48,8 +45,6 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('attribute_list_attribute_manage','Commodity_manageController@attribute_list_attribute_manage');
 	Route::any('attribute_list_attribute_manage_lists','Commodity_manageController@attribute_list_attribute_manage_lists');
 	Route::any('attribute_list_attribute_manage_add','Commodity_manageController@attribute_list_attribute_manage_add');
-	Route::any('add','Goodscategory_manageController@add');
-	Route::any('lists','Goodscategory_manageController@lists');
 	Route::any('index','IndexController@index');
 	Route::any('lists','Order_manageController@lists');
 	Route::any('state','Order_manageController@state');
@@ -65,8 +60,4 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('opinion_reply','Service_manageController@opinion_reply');
 	Route::any('warehouse_add','Store_manageController@warehouse_add');
 	Route::any('warehouse_list','Store_manageController@warehouse_list');
-
-	// Route::any('qwertyuiop','Member_manageController@index');
-
->>>>>>> 6bf5e661db9137291a603e9f2476f302add8b42c
 });

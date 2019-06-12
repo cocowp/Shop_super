@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8389fbe7-b3f8-4da8-94bf-4bb4bba43a56" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/Member_manage/admin_cate.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/Member_manage/admin_list.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/Member_manage/admin_role.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/Member_manage/admin_rule.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/IndexController.php" afterPath="$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/IndexController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Member_manageController.php" afterPath="$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Member_manageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/index/index.blade.php" afterPath="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/index/index.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/laravel/app/Modules/Base/Routes/web.php" afterPath="$PROJECT_DIR$/laravel/app/Modules/Base/Routes/web.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/laravel/routes/web.php" afterPath="$PROJECT_DIR$/laravel/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,136 +14,12 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="lists.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/goodscategory/lists.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="96" column="17" lean-forward="false" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
-              <folding>
-                <marker date="1560307252336" expanded="true" signature="402:437" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="477:514" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="663:703" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="775:809" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="865:899" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="2837:2845" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="2856:2871" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="3064:3072" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="3183:3193" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="3298:3314" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="3876:3880" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4625:4637" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4625:7738" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4884:4890" ph=" " />
-                <marker date="1560307252336" expanded="true" signature="4890:4896" ph=" " />
-                <marker date="1560307252336" expanded="true" signature="4910:4914" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4923:4934" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5159" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5256" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5261" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5274" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5275" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5276" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5341" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5360" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5367" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5373" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5381" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5471" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5480" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5487" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5494" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5506" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5512" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5522" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5523" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5532" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5539" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5608" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5618" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5660" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5693" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5704" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5741" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5753" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5764" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5825" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5882" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5893" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5957" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:5997" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6008" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6025" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6026" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6033" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6041" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6054" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6066" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6077" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4936:6156" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4963:4996" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4963:5031" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4963:5042" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4963:5050" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4963:5060" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4963:5075" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4963:5086" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="4963:5133" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5089:5097" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5162:5166" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5198:5229" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5198:5247" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5198:5256" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5264:5272" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5280:5284" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5384:5396" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5433:5471" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5620:5660" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5767:5775" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="5896:5904" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="6080:6088" ph="..." />
-                <marker date="1560307252336" expanded="true" signature="6581:6593" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Member_manageController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Member_manageController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
-              <folding>
-                <element signature="e#131#165#0#PHP" expanded="true" />
-                <marker date="1560310285843" expanded="true" signature="842:924" ph="update shop_... " />
-                <marker date="1560310285843" expanded="true" signature="1295:1330" ph="delete from " />
-                <marker date="1560310285843" expanded="true" signature="1640:1715" ph="insert into shop_admin... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Goodscategory_manageController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Goodscategory_manageController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="59" column="40" lean-forward="false" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
-              <folding>
-                <element signature="e#131#159#0#PHP" expanded="true" />
-                <marker date="1560306280940" expanded="true" signature="873:915" ph="select * fro... shop_cat" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="36" column="71" lean-forward="false" selection-start-line="36" selection-start-column="71" selection-end-line="36" selection-end-column="71" />
-              <folding>
-                <marker date="1560310136780" expanded="true" signature="396:3458" ph="..." />
-                <marker date="1560310136780" expanded="true" signature="431:3457" ph="..." />
-              </folding>
+            <state relative-caret-position="914">
+              <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -185,10 +52,10 @@
         <option value="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/memberage/lists.blade.php" />
         <option value="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/memberage/add.blade.php" />
         <option value="$PROJECT_DIR$/laravel/routes/web.php" />
-        <option value="$PROJECT_DIR$/laravel/app/Modules/Base/Routes/web.php" />
         <option value="$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Goodscategory_manageController.php" />
         <option value="$PROJECT_DIR$/laravel/app/Modules/Base/Resources/Views/goodscategory/lists.blade.php" />
         <option value="$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Member_manageController.php" />
+        <option value="$PROJECT_DIR$/laravel/app/Modules/Base/Routes/web.php" />
       </list>
     </option>
   </component>
@@ -568,12 +435,12 @@
       <workItem from="1560039950094" duration="5208000" />
       <workItem from="1560062305821" duration="7946000" />
       <workItem from="1560126742504" duration="4485000" />
-      <workItem from="1560299430143" duration="8100000" />
+      <workItem from="1560299430143" duration="8355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56723000" />
+    <option name="totallyTimeSpent" value="56978000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-55" y="125" width="1744" height="937" extended-state="0" />
@@ -967,24 +834,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Routes/web.php">
+    <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Member_manageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="36" column="71" lean-forward="false" selection-start-line="36" selection-start-column="71" selection-end-line="36" selection-end-column="71" />
+        <state relative-caret-position="828">
+          <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
           <folding>
-            <marker date="1560310136780" expanded="true" signature="396:3458" ph="..." />
-            <marker date="1560310136780" expanded="true" signature="431:3457" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Goodscategory_manageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="59" column="40" lean-forward="false" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
-          <folding>
-            <element signature="e#131#159#0#PHP" expanded="true" />
-            <marker date="1560306280940" expanded="true" signature="873:915" ph="select * fro... shop_cat" />
+            <element signature="e#131#165#0#PHP" expanded="true" />
+            <marker date="1560310285843" expanded="true" signature="842:924" ph="update shop_... " />
+            <marker date="1560310285843" expanded="true" signature="1295:1330" ph="delete from " />
+            <marker date="1560310285843" expanded="true" signature="1640:1715" ph="insert into shop_admin... " />
           </folding>
         </state>
       </provider>
@@ -1080,16 +938,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Member_manageController.php">
+    <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Http/Controllers/Goodscategory_manageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+        <state relative-caret-position="529">
+          <caret line="59" column="40" lean-forward="false" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
           <folding>
-            <element signature="e#131#165#0#PHP" expanded="true" />
-            <marker date="1560310285843" expanded="true" signature="842:924" ph="update shop_... " />
-            <marker date="1560310285843" expanded="true" signature="1295:1330" ph="delete from " />
-            <marker date="1560310285843" expanded="true" signature="1640:1715" ph="insert into shop_admin... " />
+            <element signature="e#131#159#0#PHP" expanded="true" />
+            <marker date="1560306280940" expanded="true" signature="873:915" ph="select * fro... shop_cat" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel/app/Modules/Base/Routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="914">
+          <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
