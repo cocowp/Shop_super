@@ -19,4 +19,8 @@ Route::view('view','welcome',['website'=>'LaravelWP']);
 
 Route::get('hello',function (){
    return 'Hello ,welcome to LaravelAcademy.org';
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 6bf5e661db9137291a603e9f2476f302add8b42c

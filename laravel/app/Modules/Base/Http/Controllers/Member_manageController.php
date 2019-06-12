@@ -10,7 +10,8 @@ namespace App\Modules\Base\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class Member_manageController
+
+class Member_manageController extends Controller
 {
    public function lists()
    {
@@ -73,6 +74,10 @@ class Member_manageController
        {
            return json_encode(['statue'=>'201','msg'=>"修改失败"]);
        }
+   }
+    public function index()
+   {
+       echo 123;
    }
 
 }

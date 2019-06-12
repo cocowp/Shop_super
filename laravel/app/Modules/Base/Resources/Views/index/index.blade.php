@@ -171,27 +171,27 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin-list.html">
+                        <a _href="admin_list.html">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员列表</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-role.html">
+                        <a _href="admin_role.html">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>角色管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-cate.html">
+                        <a _href="admin_cate.html">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限分类</cite>
+                            <cite>分配角色</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-rule.html">
+                        <a _href="admin_rule.html">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限管理</cite>
+                            <cite>分配权限</cite>
                         </a>
                     </li >
                 </ul>

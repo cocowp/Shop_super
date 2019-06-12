@@ -8,6 +8,7 @@
  */
 namespace App\Modules\Base\Http\Controllers;
 
+use DB;
 use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
@@ -16,4 +17,14 @@ class IndexController extends Controller
    {
        return view('base::index.index');
    }
+
+
+
+
+
+
+
+
+
+
 }
