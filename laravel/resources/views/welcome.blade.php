@@ -112,10 +112,11 @@
 @csrf
 <body>
 
-    <h1>aaa</h1>
-<div id="app">
-    <form-component></form-component>
-</div>
+{{--    <h1>aaa</h1>--}}
+
+    <div id="app">
+        <form-component></form-component>
+    </div>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
