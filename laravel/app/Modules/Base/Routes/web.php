@@ -46,7 +46,14 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('attribute_list_attribute_manage_lists','Commodity_manageController@attribute_list_attribute_manage_lists');
 	Route::any('attribute_list_attribute_manage_add','Commodity_manageController@attribute_list_attribute_manage_add');
 	Route::any('index','IndexController@index');
-	Route::any('lists','Order_manageController@lists');
+
+
+	Route::any('order_lists','Order_manageController@lists')->name('order/list');
+	Route::any('order_create','Order_manageController@create')->name('order/create');
+	Route::any('order_edit','Order_manageController@edit')->name('order/edit');
+	Route::any('order_edit_status','Order_manageController@editOrderStatus')->name('order/editOrderStatus');
+	Route::any('order_del','Order_manageController@del')->name('order/del');
+
 	Route::any('state','Order_manageController@state');
 	Route::any('list_compile','Order_manageController@list_compile');
 	Route::any('list_compile_state_amend','Order_manageController@list_compile_state_amend');
@@ -54,6 +61,8 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('list_compile_commodity_amend','Order_manageController@list_compile_commodity_amend');
 	Route::any('state_add','Order_manageController@state_add');
 	Route::any('state_list','Order_manageController@state_list');
+
+
 	Route::any('comment_audit','Service_manageController@comment_audit');
 	Route::any('comment_reply','Service_manageController@comment_reply');
 	Route::any('opinion_list','Service_manageController@opinion_list');

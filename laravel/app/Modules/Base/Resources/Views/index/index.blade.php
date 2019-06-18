@@ -126,7 +126,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="order-list.html">
+                        <a _href=" {{route('order/list')}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
                         </a>
