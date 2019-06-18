@@ -22,4 +22,11 @@ Route::group(['prefix' => 'base'], function () {
         return view('base::index.welcome');
     });
 
+    Route::get('/menu_list','MenuController@index');
+    Route::get('/menu_delOne','MenuController@delOne');
+    Route::get('/menu_edit','MenuController@menu_edit');
+    Route::post('/menu_editdo','MenuController@menu_editdo');
+    Route::post('/add_pmenu','MenuController@add_pmenu');
+    Route::get('/menu_add','MenuController@menu_add');
+    Route::post('/menu_adddo','MenuController@menu_adddo');
 });
