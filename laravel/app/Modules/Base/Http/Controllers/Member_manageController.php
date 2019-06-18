@@ -9,6 +9,7 @@
 namespace App\Modules\Base\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 class Member_manageController extends Controller

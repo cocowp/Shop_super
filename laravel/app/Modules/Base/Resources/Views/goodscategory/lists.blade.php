@@ -35,7 +35,7 @@
       <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so layui-form-pane">
           <input class="layui-input" placeholder="分类名" name="cate_name">
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>增加</button>
+          <button class="layui-btn" type="button" onclick="x_admin_show('添加分类','catadd')"><i class="layui-icon"></i>添加</button>
         </form>
       </div>
       <blockquote class="layui-elem-quote">每个tr 上有两个属性 cate-id='1' 当前分类id fid='0' 父级id ,顶级分类为 0，有子分类的前面加收缩图标<i class="layui-icon x-show" status='true'>&#xe623;</i></blockquote>
@@ -72,7 +72,7 @@
             </td>
             <td class="td-manage">
               <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑','admin-edit.html')" ><i class="layui-icon">&#xe642;</i>编辑</button>
-              <button class="layui-btn layui-btn-warm layui-btn-xs childen"><i class="layui-icon">&#xe642;</i>查看子分类</button>
+              <button class="layui-btn layui-btn-warm layui-btn-xs childen">查看子分类</button>
               <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="member_del(this,'{{$val->id}}')" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
             </td>
           </tr>
@@ -90,8 +90,8 @@
       });
 
       $(document).on('click','.hchilden',function () {
-
-          $(this).parents('tr').nextAll('tr').remove();
+          var id = $(this).parents('tr').attr('cate-id');
+          $('.'+id+'').remove();
           $(this).removeClass('hchilden');
           $(this).addClass('childen');
           $(this).text('查看子分类');
@@ -101,7 +101,7 @@
       $(document).on('click','.childen',function () {
 
           var that = $(this);
-
+          console.log(that);
           var id = $(this).parents('tr').attr("cate-id");
 
           $.ajax({
@@ -110,23 +110,22 @@
               dataType : "json",
               data : {id : id},
               success:function (result) {
-
                   var str;
                 $(result.data).each(function (i,v) {
-                    str += "&nbsp;&nbsp;<tr cate-id="+v.id+" fid="+v.parent_id+" >\
+                    str += "<tr class="+id+" cate-id="+v.id+" fid="+v.parent_id+" >\
                     <td>\
                     <div class='layui-unselect layui-form-checkbox' lay-skin='primary' data-id="+2+"><i class='layui-icon'>&#xe605;</i></div>\
                     </td>\
                     <td>"+v.id+"</td>\
                     <td>\
-                    <i class='layui-icon x-show' status='true'>&#xe623;</i>"+v.name+"</td>\
+                    <i class='layui-icon x-show' status='true'>&nbsp;&nbsp;&#xe623;</i>"+v.name+"</td>\
                     <td><input type='text' class='layui-input x-sort' name='order' value="+v.sort_order+"></td>\
                         <td>\
                         <input type='checkbox' name='switch'  lay-text='开启|停用' checked  lay-skin='switch'>\
                         </td>\
                         <td class='td-manage'>\
                         <button class='layui-btn layui-btn layui-btn-xs'  onclick='x_admin_show('编辑','admin-edit.html')' ><i class='layui-icon'>&#xe642;</i>编辑</button>\
-                    <button class='layui-btn layui-btn-warm layui-btn-xs childen'><i class='layui-icon'>&#xe642;</i>查看子分类</button>\
+                    <button class='layui-btn layui-btn-warm layui-btn-xs childen'>查看子分类</button>\
                     <button class='layui-btn-danger layui-btn layui-btn-xs'  onclick='member_del(this,"+v.id+")' href='javascript:;' ><i class='layui-icon'>&#xe640;</i>删除</button>\
                     </td>\
                     </tr>"

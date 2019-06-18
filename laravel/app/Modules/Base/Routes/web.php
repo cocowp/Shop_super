@@ -33,6 +33,9 @@ Route::group(['prefix' => 'base'], function () {
     Route::get('/catlist','Goodscategory_manageController@lists');
     Route::get('/search_child','Goodscategory_manageController@search_child');
     Route::get('/cat_delete','Goodscategory_manageController@cat_delete');
+    Route::get('/catadd','Goodscategory_manageController@add');
+    Route::get('/getchild','Goodscategory_manageController@getchild');
+    Route::post('/addchild','Goodscategory_manageController@addchild');
     
 	Route::any('moneyoff_acticity','Active_manageController@moneyoff_acticity');
 	Route::any('discount_coupon','Active_manageController@discount_coupon');
@@ -40,11 +43,17 @@ Route::group(['prefix' => 'base'], function () {
 	
 	Route::any('add','Brand_manageController@add');
 	Route::any('lists','Brand_manageController@lists');
-	Route::any('attribute_add','Commodity_manageController@attribute_add');
-	Route::any('attribute_list','Commodity_manageController@attribute_list');
+
+
+	Route::any('attribute_add','Commodity_manageController@commodity_add');
+	Route::get('add_sku','Commodity_manageController@add_sku');
+	Route::any('attribute_list','Commodity_manageController@commodity_list');
+    Route::get('commodity_delete','Commodity_manageController@commodity_delete');
 	Route::any('attribute_list_attribute_manage','Commodity_manageController@attribute_list_attribute_manage');
 	Route::any('attribute_list_attribute_manage_lists','Commodity_manageController@attribute_list_attribute_manage_lists');
 	Route::any('attribute_list_attribute_manage_add','Commodity_manageController@attribute_list_attribute_manage_add');
+
+
 	Route::any('index','IndexController@index');
 	Route::any('lists','Order_manageController@lists');
 	Route::any('state','Order_manageController@state');
