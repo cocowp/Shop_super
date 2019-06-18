@@ -60,7 +60,44 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
+<<<<<<< HEAD
                     <cite>菜单管理</cite>
+=======
+                    <cite>管理员管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="admin_list.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>管理员列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="admin_role.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>角色管理</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="admin_cate.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>分配角色</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="admin_rule.html">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>分配权限</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6ce;</i>
+                    <cite>系统统计</cite>
+>>>>>>> 978cfe8420b5ac46b2af2a7bef8ae3988f29ea79
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">

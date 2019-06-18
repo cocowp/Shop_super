@@ -22,6 +22,7 @@ Route::group(['prefix' => 'base'], function () {
         return view('base::index.welcome');
     });
 
+<<<<<<< HEAD
     Route::get('/menu_list','MenuController@index');
     Route::get('/menu_delOne','MenuController@delOne');
     Route::get('/menu_edit','MenuController@menu_edit');
@@ -29,4 +30,53 @@ Route::group(['prefix' => 'base'], function () {
     Route::post('/add_pmenu','MenuController@add_pmenu');
     Route::get('/menu_add','MenuController@menu_add');
     Route::post('/menu_adddo','MenuController@menu_adddo');
+=======
+    Route::get('/admin_list','Member_manageController@lists');
+    Route::get('/admin_editing','Member_manageController@editing');
+    Route::post('/admin_update','Member_manageController@updateinfo');
+    Route::get('/admin_delete','Member_manageController@deleteinfo');
+    Route::post('/admin_adddo','Member_manageController@adddo');
+    Route::get('/admin_add',function (){
+       return view('base::memberage.add');
+    });
+    Route::get('/catlist','Goodscategory_manageController@lists');
+    Route::get('/search_child','Goodscategory_manageController@search_child');
+    Route::get('/cat_delete','Goodscategory_manageController@cat_delete');
+    Route::get('/catadd','Goodscategory_manageController@add');
+    Route::get('/getchild','Goodscategory_manageController@getchild');
+    Route::post('/addchild','Goodscategory_manageController@addchild');
+    
+	Route::any('moneyoff_acticity','Active_manageController@moneyoff_acticity');
+	Route::any('discount_coupon','Active_manageController@discount_coupon');
+	Route::any('full_give','Active_manageController@full_give');
+	
+	Route::any('add','Brand_manageController@add');
+	Route::any('lists','Brand_manageController@lists');
+
+
+	Route::any('attribute_add','Commodity_manageController@commodity_add');
+	Route::get('add_sku','Commodity_manageController@add_sku');
+	Route::any('attribute_list','Commodity_manageController@commodity_list');
+    Route::get('commodity_delete','Commodity_manageController@commodity_delete');
+	Route::any('attribute_list_attribute_manage','Commodity_manageController@attribute_list_attribute_manage');
+	Route::any('attribute_list_attribute_manage_lists','Commodity_manageController@attribute_list_attribute_manage_lists');
+	Route::any('attribute_list_attribute_manage_add','Commodity_manageController@attribute_list_attribute_manage_add');
+
+
+	Route::any('index','IndexController@index');
+	Route::any('lists','Order_manageController@lists');
+	Route::any('state','Order_manageController@state');
+	Route::any('list_compile','Order_manageController@list_compile');
+	Route::any('list_compile_state_amend','Order_manageController@list_compile_state_amend');
+	Route::any('list_compile_user_amend','Order_manageController@list_compile_user_amend');
+	Route::any('list_compile_commodity_amend','Order_manageController@list_compile_commodity_amend');
+	Route::any('state_add','Order_manageController@state_add');
+	Route::any('state_list','Order_manageController@state_list');
+	Route::any('comment_audit','Service_manageController@comment_audit');
+	Route::any('comment_reply','Service_manageController@comment_reply');
+	Route::any('opinion_list','Service_manageController@opinion_list');
+	Route::any('opinion_reply','Service_manageController@opinion_reply');
+	Route::any('warehouse_add','Store_manageController@warehouse_add');
+	Route::any('warehouse_list','Store_manageController@warehouse_list');
+>>>>>>> 978cfe8420b5ac46b2af2a7bef8ae3988f29ea79
 });
