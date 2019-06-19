@@ -22,7 +22,6 @@ Route::group(['prefix' => 'base'], function () {
         return view('base::index.welcome');
     });
 
-<<<<<<< HEAD
     Route::get('/menu_list','MenuController@index');
     Route::get('/menu_delOne','MenuController@delOne');
     Route::get('/menu_edit','MenuController@menu_edit');
@@ -30,7 +29,6 @@ Route::group(['prefix' => 'base'], function () {
     Route::post('/add_pmenu','MenuController@add_pmenu');
     Route::get('/menu_add','MenuController@menu_add');
     Route::post('/menu_adddo','MenuController@menu_adddo');
-=======
     Route::get('/admin_list','Member_manageController@lists');
     Route::get('/admin_editing','Member_manageController@editing');
     Route::post('/admin_update','Member_manageController@updateinfo');
@@ -64,7 +62,14 @@ Route::group(['prefix' => 'base'], function () {
 
 
 	Route::any('index','IndexController@index');
-	Route::any('lists','Order_manageController@lists');
+
+
+	Route::any('order_lists','Order_manageController@lists')->name('order/list');
+	Route::any('order_create','Order_manageController@create')->name('order/create');
+	Route::any('order_edit','Order_manageController@edit')->name('order/edit');
+	Route::any('order_edit_status','Order_manageController@editOrderStatus')->name('order/editOrderStatus');
+	Route::any('order_del','Order_manageController@del')->name('order/del');
+
 	Route::any('state','Order_manageController@state');
 	Route::any('list_compile','Order_manageController@list_compile');
 	Route::any('list_compile_state_amend','Order_manageController@list_compile_state_amend');
@@ -72,11 +77,12 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('list_compile_commodity_amend','Order_manageController@list_compile_commodity_amend');
 	Route::any('state_add','Order_manageController@state_add');
 	Route::any('state_list','Order_manageController@state_list');
+
+
 	Route::any('comment_audit','Service_manageController@comment_audit');
 	Route::any('comment_reply','Service_manageController@comment_reply');
 	Route::any('opinion_list','Service_manageController@opinion_list');
 	Route::any('opinion_reply','Service_manageController@opinion_reply');
 	Route::any('warehouse_add','Store_manageController@warehouse_add');
 	Route::any('warehouse_list','Store_manageController@warehouse_list');
->>>>>>> 978cfe8420b5ac46b2af2a7bef8ae3988f29ea79
 });

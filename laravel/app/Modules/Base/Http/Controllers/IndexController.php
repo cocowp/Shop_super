@@ -17,16 +17,4 @@ class IndexController extends Controller
        return view('base::index.index');
    }
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
->>>>>>> 978cfe8420b5ac46b2af2a7bef8ae3988f29ea79
 }
