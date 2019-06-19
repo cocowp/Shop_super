@@ -18,12 +18,12 @@
             <span class="layui-breadcrumb">
               <a><cite>首页</cite></a>
               <a><cite>会员管理</cite></a>
-              <a><cite>管理员列表</cite></a>
+              <a><cite>会员列表</cite></a>
             </span>
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
         <div class="x-body">
-            <form class="layui-form x-center" action="" style="width:80%">
+            <form class="layui-form x-center" action="" style="width:800px">
                 <div class="layui-form-pane" style="margin-top: 15px;">
                   <div class="layui-form-item">
                     <label class="layui-form-label">日期范围</label>
@@ -34,7 +34,7 @@
                       <input class="layui-input" placeholder="截止日" id="LAY_demorange_e">
                     </div>
                     <div class="layui-input-inline">
-                      <input type="text" name="username"  placeholder="请输入登录名" autocomplete="off" class="layui-input">
+                      <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-input-inline" style="width:80px">
                         <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
@@ -42,44 +42,46 @@
                   </div>
                 </div> 
             </form>
-            <xblock><button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button><button class="layui-btn" onclick="admin_add('添加用户','admin-add.html','600','500')"><i class="layui-icon">&#xe608;</i>添加</button></xblock>
+            <xblock><button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button><span class="x-right" style="line-height:40px">共有数据：88 条</span></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="" value=""></th>
+                        <th>
+                            <input type="checkbox" name="" value="">
+                        </th>
                         <th>ID</th>
-                        <th>管理员名称</th>
-                        <th>手机</th>
-                        <th>邮箱</th>
-                        <th>角色</th>
-                        <th>加入时间</th>
+                        <th>仓库名称</th>
+                        <th>仓库编码</th>
+                        <th>仓库是否启用</th>
+                        <th>仓库所在地区</th>
+                        <th>仓库服务地区</th>
                         <th>状态</th>
                         <th>操作</th>
                     </tr>
                 </thead>
-                <?php foreach ($data as $key => $val) { ?>
+                <?php foreach ($data as $key => $value) { ?>
                 <tbody>
                     <tr>
                         <td>
                             <input type="checkbox" value="1" name="">
                         </td>
                         <td>
-                            <?php echo $val->id; ?>
+                            <?php echo $value->id; ?>
+                        </td>
+                        <td >
+                           <?php echo $value->name; ?>
+                        </td>
+                        <td >
+                            <?php echo $value->encoding; ?>
                         </td>
                         <td>
-                            <?php echo $val->name; ?>
+                            <?php echo $value->is_start; ?>
                         </td>
                         <td >
-                            18925139194
+                           <?php echo $value->in_area; ?>
                         </td>
                         <td >
-                            113664000@qq.com
-                        </td>
-                        <td >
-                            <?php echo $val->node; ?>
-                        </td>
-                        <td>
-                            2017-01-01 11:11:42
+                            <?php echo $value->is_area; ?>
                         </td>
                         <td class="td-status">
                             <span class="layui-btn layui-btn-normal layui-btn-mini">
@@ -87,14 +89,18 @@
                             </span>
                         </td>
                         <td class="td-manage">
-                            <a style="text-decoration:none" onclick="admin_stop(this,'10001')" href="javascript:;" title="停用">
+                            <a style="text-decoration:none" onclick="member_stop(this,'10001')" href="javascript:;" title="停用">
                                 <i class="layui-icon">&#xe601;</i>
                             </a>
-                            <a title="编辑" href="javascript:;" onclick="admin_edit('编辑','admin-edit.html','4','','510')"
+                            <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-edit.html','4','','510')"
                             class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="delete?id=<?php echo $val->id; ?>" onclick="" 
+                            <a style="text-decoration:none"  onclick="member_password('修改密码','member-password.html','10001','600','400')"
+                            href="javascript:;" title="修改密码">
+                                <i class="layui-icon">&#xe631;</i>
+                            </a>
+                            <a title="删除" href="delete?id=<?php echo $value->id; ?>" onclick="" 
                             style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
@@ -104,9 +110,7 @@
                 <?php } ?>
             </table>
 
-            <div id="page">
-             
-            </div>
+            <div id="page"></div>
         </div>
         <script src="http://www.supershop.com/start/lib/layui/layui.js" charset="utf-8"></script>
         <script src="http://www.supershop.com/start/js/x-layui.js" charset="utf-8"></script>
@@ -166,38 +170,46 @@
                     layer.msg('删除成功', {icon: 1});
                 });
              }
-             /*添加*/
-            function admin_add(title,url,w,h){
+             /*用户-添加*/
+            function member_add(title,url,w,h){
+                x_admin_show(title,url,w,h);
+            }
+            /*用户-查看*/
+            function member_show(title,url,id,w,h){
                 x_admin_show(title,url,w,h);
             }
 
-             /*停用*/
-            function admin_stop(obj,id){
+             /*用户-停用*/
+            function member_stop(obj,id){
                 layer.confirm('确认要停用吗？',function(index){
                     //发异步把用户状态进行更改
-                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="admin_start(this,id)" href="javascript:;" title="启用"><i class="layui-icon">&#xe62f;</i></a>');
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="layui-icon">&#xe62f;</i></a>');
                     $(obj).parents("tr").find(".td-status").html('<span class="layui-btn layui-btn-disabled layui-btn-mini">已停用</span>');
                     $(obj).remove();
                     layer.msg('已停用!',{icon: 5,time:1000});
                 });
             }
 
-            /*启用*/
-            function admin_start(obj,id){
+            /*用户-启用*/
+            function member_start(obj,id){
                 layer.confirm('确认要启用吗？',function(index){
                     //发异步把用户状态进行更改
-                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="admin_stop(this,id)" href="javascript:;" title="停用"><i class="layui-icon">&#xe601;</i></a>');
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="layui-icon">&#xe601;</i></a>');
                     $(obj).parents("tr").find(".td-status").html('<span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>');
                     $(obj).remove();
                     layer.msg('已启用!',{icon: 6,time:1000});
                 });
             }
-            //编辑
-            function admin_edit (title,url,id,w,h) {
+            // 用户-编辑
+            function member_edit (title,url,id,w,h) {
                 x_admin_show(title,url,w,h); 
             }
-            /*删除*/
-            function admin_del(obj,id){
+            /*密码-修改*/
+            function member_password(title,url,id,w,h){
+                x_admin_show(title,url,w,h);  
+            }
+            /*用户-删除*/
+            function member_del(obj,id){
                 layer.confirm('确认要删除吗？',function(index){
                     //发异步删除数据
                     $(obj).parents("tr").remove();

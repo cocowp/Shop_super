@@ -39,6 +39,16 @@ Route::group(['prefix' => 'base'], function () {
     Route::post('/admin_update','Member_manageController@updateinfo');
     Route::get('/admin_delete','Member_manageController@deleteinfo');
     Route::post('/admin_adddo','Member_manageController@adddo');
+
+
+    Route::get('delete','Store_manageController@delete');
+    Route::get('warehouse_list','Store_manageController@warehouse_list');
+    Route::get('admin_lists','Member_manageController@admin_list');
+    Route::get('admin_cates','Member_manageController@admin_cate');
+    Route::get('admin_roles','Member_manageController@admin_role');
+    Route::get('admin_rules','Member_manageController@admin_rule');
+    Route::get('admin_cate_do','Member_manageController@admin_cate_do');
+
     Route::get('/admin_add',function (){
        return view('base::memberage.add');
     });
@@ -82,7 +92,6 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('list_compile_commodity_amend','Order_manageController@list_compile_commodity_amend');
 	Route::any('state_add','Order_manageController@state_add');
 	Route::any('state_list','Order_manageController@state_list');
-
 
 	Route::any('comment_audit','Service_manageController@comment_audit');
 	Route::any('comment_reply','Service_manageController@comment_reply');

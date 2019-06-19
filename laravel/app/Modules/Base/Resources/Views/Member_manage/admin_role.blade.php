@@ -11,7 +11,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="./css/x-admin.css" media="all">
+        <link rel="stylesheet" href="http://www.supershop.com/start/css/x-admin.css" media="all">
     </head>
     <body>
         <div class="x-nav">
@@ -31,58 +31,39 @@
                         <th>
                             <input type="checkbox" name="" value="">
                         </th>
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            角色名
-                        </th>
-                        <th>
-                            拥有权限规则
-                        </th>
-                        <th>
-                            描述
-                        </th>
-                        <th>
-                            操作
-                        </th>
+                        <th>ID</th>
+                        <th>角色名</th>
+                        <th>描述</th>
+                        <th>操作</th>
                     </tr>
                 </thead>
+                <?php foreach ($data as $key => $value) { ?>
                 <tbody>
                     <tr>
                         <td>
                             <input type="checkbox" value="1" name="">
                         </td>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            超级管理员
-                        </td>
-                        <td >
-                            会员列表，问题列表
-                        </td>
-                        <td >
-                            具有至高无上的权利
-                        </td>
+                        <td><?php echo $value->id; ?></td>
+                        <td><?php echo $value->name; ?></td>
+                        <td><?php echo $value->data; ?></td>
                         <td class="td-manage">
                             <a title="编辑" href="javascript:;" onclick="role_edit('编辑','role-edit.html','4','','510')"
                             class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="role_del(this,'1')" 
+                            <a title="删除" href="delete?id=<?php echo $value->id; ?>" onclick="" 
                             style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
                         </td>
                     </tr>
                 </tbody>
+                <?php } ?>
             </table>
-
             <div id="page"></div>
         </div>
-        <script src="./lib/layui/layui.js" charset="utf-8"></script>
-        <script src="./js/x-layui.js" charset="utf-8"></script>
+        <script src="http://www.supershop.com/start/lib/layui/layui.js" charset="utf-8"></script>
+        <script src="http://www.supershop.com/start/js/x-layui.js" charset="utf-8"></script>
         <script>
             layui.use(['laydate','element','laypage','layer'], function(){
                 $ = layui.jquery;//jquery
@@ -93,7 +74,6 @@
 
               //以上模块根据需要引入
             });
-
             //批量删除提交
              function delAll () {
                 layer.confirm('确认要删除吗？',function(index){
@@ -104,9 +84,7 @@
              /*添加*/
             function role_add(title,url,w,h){
                 x_admin_show(title,url,w,h);
-            }
-
-             
+            } 
             //编辑
             function role_edit (title,url,id,w,h) {
                 x_admin_show(title,url,w,h); 

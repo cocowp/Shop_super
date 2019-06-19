@@ -80,5 +80,80 @@ class Member_manageController extends Controller
    {
        echo 123;
    }
+    protected $beforeActionList = [
+        'rbac' => ['only'=>'admin_list,admin_cate,admin_role,admin_rule'],
+    ];
+
+    public function rbac()
+    {
+        $request = Request::instance();
+        $action = $request->module().'/'.$request->controller().'/'.$request->action();
+        // var_dump($action);die;
+        $user = session::get('id');
+        //var_dump($user);die;
+        if (empty($user)) {
+            $this->error('无权限','index');
+        }
+        $data = DB::table('admin_role')->where('id',$user)->select();
+        foreach ($data as $k => $v) {
+            $data[$k]=DB::table('role_node')->where('role_id',$v['role_id'])->select();
+        }
+        foreach ($data[0] as $k => $v) {
+            $data1[]=$v['node_id'];
+        }
+        $ids=implode(',',$data1);
+        $data2 = DB::table('node')->field('url')->where('id','in',$ids)->select();
+        foreach ($data2 as $k => $v) {
+            $data3[]=$v['uri'];
+        }
+        if (!in_array($action,$data3)) {
+            echo "无权限";die;
+        }
+    }
+
+    public function admin_list()//管理员列表
+    {
+        // var_dump('123');die;
+        $data = Db::table('admin')->get();
+        // var_dump($data);die;
+        return view('base::member_manage.admin_list',['data'=>$data]);
+    }
+    public function admin_role()//角色管理
+    {
+        $data = Db::table('role')->get();
+        return view('base::member_manage.admin_role',['data'=>$data]);
+    }
+    public function admin_cate()//分配角色
+    {
+        $data = Db::table('role')->get();
+        $data1 = Db::table('admin')->get();
+        // var_dump($data1);die;
+        return view('base::member_manage.admin_cate',['data'=>$data,'data1'=>$data1]);
+    }
+    public function admin_cate_do()
+    {
+        $data = input('get.');
+        // var_dump($data);die;
+    }
+    public function admin_rule()//分配权限
+    {
+        $data = Db::table('node')->get();
+        $data1 = Db::table('role')->get();
+        return view('base::member_manage.admin_rule',['data'=>$data,'data1'=>$data1]);
+    }
+    public function admin_rule_do()
+    {
+
+    }
+    public function delete()//管理员列表删除
+    {
+        $id = $_GET['id'];
+        // var_dump($id);die;
+        $res = Db::table('admin')->delete($id);
+        if ($res) {
+            echo "删除成功";
+        }
+
+    }
 
 }
