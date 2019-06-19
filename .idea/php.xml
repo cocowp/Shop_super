@@ -80,6 +80,11 @@
       <path value="$PROJECT_DIR$/laravel/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/laravel/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/laravel/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/laravel/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/laravel/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/laravel/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/laravel/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/laravel/vendor/symfony/polyfill-util" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
