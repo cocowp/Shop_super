@@ -22,6 +22,11 @@ Route::group(['prefix' => 'base'], function () {
         return view('base::index.welcome');
     });
 
+
+
+    Route::get('/login','LoginController@login');
+    Route::post('/login_do','LoginController@login_do');
+
     Route::get('/menu_list','MenuController@index');
     Route::get('/menu_delOne','MenuController@delOne');
     Route::get('/menu_edit','MenuController@menu_edit');

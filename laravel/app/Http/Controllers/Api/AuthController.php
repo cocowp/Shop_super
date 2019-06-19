@@ -19,7 +19,6 @@ class AuthController extends Controller
     {
         $credentials = request(['login_name', 'password']);
         $credentials['password'] = md5($credentials['password']);
-
 //        $token = auth('api')->attempt($credentials);
         if (! $token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);

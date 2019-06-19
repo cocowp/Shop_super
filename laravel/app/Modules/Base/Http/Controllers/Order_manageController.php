@@ -41,7 +41,7 @@ class Order_manageController
            if($res){
                 echo "<script>parent.location.reload();</script>";
            }else{
-                return "修改时便";
+                return "修改失败";
            }
        }
        $id = Request::input('id');
