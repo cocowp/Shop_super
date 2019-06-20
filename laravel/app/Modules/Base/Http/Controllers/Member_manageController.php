@@ -80,6 +80,8 @@ class Member_manageController extends Controller
    {
        echo 123;
    }
+
+
     protected $beforeActionList = [
         'rbac' => ['only'=>'admin_list,admin_cate,admin_role,admin_rule'],
     ];

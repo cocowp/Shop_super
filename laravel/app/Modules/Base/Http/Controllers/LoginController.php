@@ -5,7 +5,6 @@ namespace App\Modules\Base\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -22,7 +21,7 @@ class LoginController extends Controller
 //       print_r($info);die;
        $info = json_decode("$info",1);
        if($info) {
-           Session::put('info',$info);
+           session(['info'=>$info]);
            return json_encode(['status'=>200,'msg'=>"登录成功"]);
        }
        return json_encode(['status'=>201,'msg'=>"登录失败"]);

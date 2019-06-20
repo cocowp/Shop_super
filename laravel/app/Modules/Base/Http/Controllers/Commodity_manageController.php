@@ -12,7 +12,6 @@ use App\Modules\Base\Model\Goodcat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class Commodity_manageController
 {
    public function commodity_add(Request $request)
