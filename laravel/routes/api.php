@@ -20,16 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::resource('orders', 'OrderController', ['except' => ['create', 'edit']]);
 
 
-Route::group([
-    'prefix' => 'auth'
-], function ($router) {
+Route::post('login', 'ApiController@login');
+Route::post('register', 'ApiController@register');
 
-    Route::post('login', 'Api\AuthController@login');
-    Route::post('logout', 'Api\AuthController@logout');
-    Route::post('refresh', 'Api\AuthController@refresh');
-    Route::post('me', 'Api\AuthController@me');
-});
+Route::group(['middleware' => 'auth.jwt'], function () {
+    Route::get('logout', 'ApiController@logout');
 
+<<<<<<< HEAD
 Route::group([
     'prefix' => 'order'
 ], function ($router) {
@@ -37,3 +34,13 @@ Route::group([
     Route::get('{id}', 'OrderController@list');
 });
 
+=======
+    Route::get('user', 'ApiController@getAuthUser');
+
+    Route::get('products', 'ProductController@index');
+    Route::get('products/{id}', 'ProductController@show');
+    Route::post('products', 'ProductController@store');
+    Route::put('products/{id}', 'ProductController@update');
+    Route::delete('products/{id}', 'ProductController@destroy');
+});
+>>>>>>> 2ea047728b55eabc1e1eb8c71ca2a72109afdb9c

@@ -59,8 +59,6 @@
         <ul id="nav">
             <li>
                 <a href="javascript:;">
-<<<<<<< HEAD
-=======
                     <i class="iconfont">&#xe6b8;</i>
                     <cite>会员管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
@@ -174,25 +172,25 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin_list.html">
+                        <a _href="admin_list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员列表</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin_role.html">
+                        <a _href="admin_role">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>角色管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin_cate.html">
+                        <a _href="admin_cate">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>分配角色</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin_rule.html">
+                        <a _href="admin_rule">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>分配权限</cite>
                         </a>

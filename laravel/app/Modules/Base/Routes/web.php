@@ -99,4 +99,9 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('opinion_reply','Service_manageController@opinion_reply');
 	Route::any('warehouse_add','Store_manageController@warehouse_add');
 	Route::any('warehouse_list','Store_manageController@warehouse_list');
+
+    Route::any('admin_cate','Member_manageController@admin_cate');
+    Route::any('admin_list','Member_manageController@admin_list');
+    Route::any('admin_role','Member_manageController@admin_role');
+    Route::any('admin_rule','Member_manageController@admin_rule');
 });
