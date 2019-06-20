@@ -2,27 +2,33 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Tymon\JWTAuth\JWT;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('jwt.auth', ['except' => ['login']]);
     }
 
     public function login()
     {
-        $credentials = request(['login_name', 'password']);
-        $credentials['password'] = md5($credentials['password']);
-//        $token = auth('api')->attempt($credentials);
-        if (! $token = JWTAuth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        $credentials = request(['login_name','mobile','password']);
+
+//        var_dump($credentials);die;
+
+        DB::enableQueryLog();
+
+        $token = auth('api')->attempt($credentials);
+
+        dd(DB::getQueryLog());die;
+
+
+
+//        if (! $token = auth('api')->attempt($credentials)) {
+//            return response()->json(['error' => 'Unauthorized'], 401);
+//        }
 
         return $this->respondWithToken($token);
     }

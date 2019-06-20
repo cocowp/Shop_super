@@ -17,7 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('orders', 'OrderController', ['except' => ['create', 'edit']]);
+//Route::resource('orders', 'OrderController', ['except' => ['create', 'edit']]);
+
 
 Route::group([
     'prefix' => 'auth'
@@ -27,5 +28,12 @@ Route::group([
     Route::post('logout', 'Api\AuthController@logout');
     Route::post('refresh', 'Api\AuthController@refresh');
     Route::post('me', 'Api\AuthController@me');
+});
+
+Route::group([
+    'prefix' => 'order'
+], function ($router) {
+
+    Route::get('{id}', 'OrderController@list');
 });
 
