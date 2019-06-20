@@ -3,20 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
-=======
 use Illuminate\Support\Facades\Auth;
->>>>>>> 2ea047728b55eabc1e1eb8c71ca2a72109afdb9c
 
 class AuthController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('jwt.auth', ['except' => ['login']]);
-    }
-
+//    public function __construct()
+//    {
+//        $this->middleware('jwt.auth', ['except' => ['login']]);
+//    }
     /**
      * Get a JWT token via given credentials.
      *
@@ -26,30 +22,27 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-<<<<<<< HEAD
-        $credentials = request(['login_name','mobile','password']);
-
-//        var_dump($credentials);die;
-
-        DB::enableQueryLog();
-
-        $token = auth('api')->attempt($credentials);
-
-        dd(DB::getQueryLog());die;
+//        $credentials = request(['login_name','mobile','password']);
+//
+////        var_dump($credentials);die;
+//
+//        DB::enableQueryLog();
+//
+//        $token = auth('api')->attempt($credentials);
+//
+//        dd(DB::getQueryLog());die;
 
 
 
 //        if (! $token = auth('api')->attempt($credentials)) {
 //            return response()->json(['error' => 'Unauthorized'], 401);
 //        }
-=======
         $credentials = $request->only('email', 'password');
 
         $token = $this->guard()->attempt($credentials);
         if ($token) {
             return $this->respondWithToken($token);
         }
->>>>>>> 2ea047728b55eabc1e1eb8c71ca2a72109afdb9c
 
         return response()->json(['error' => 'Unauthorized'], 401);
     }

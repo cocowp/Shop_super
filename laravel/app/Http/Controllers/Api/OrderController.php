@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Order as OrderModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class OrderController extends Controller
 {
@@ -20,7 +21,11 @@ class OrderController extends Controller
 //        return $res;
     }
 
-    public function list($id){
+    public function list(){
+
+        $token = request('token');
+        $user = JWTAuth::authenticate($token);
+        $id = $user['id'];
 
         $order_list = OrderModel::where('user_id', $id)->get();
         return Controller::Message($order_list);

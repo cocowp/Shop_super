@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterAuthRequest;
 use App\User;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWT;
 
 class ApiController extends Controller
 {
