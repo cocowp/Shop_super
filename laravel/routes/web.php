@@ -20,3 +20,8 @@ Route::view('view','welcome',['website'=>'LaravelWP']);
 Route::get('hello',function (){
    return 'Hello ,welcome to LaravelAcademy.org';
 });
+//登录
+Route::get('/login','LoginController@login');
+Route::get('/index','IndexController@index');
+Route::get('/buycar','BuycarController@index');
+Route::get('/regist','RegistController@index');

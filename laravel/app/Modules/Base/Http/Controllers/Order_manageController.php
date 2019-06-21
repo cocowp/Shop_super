@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Request;
 
 class Order_manageController
 {
+
+
    public function lists()
    {
        $orders = Order::orderBy('created_at','desc')->paginate(10);

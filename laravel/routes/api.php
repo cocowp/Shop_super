@@ -17,13 +17,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('orders', 'OrderController', ['except' => ['create', 'edit']]);
+//Route::resource('orders', 'OrderController', ['except' => ['create', 'edit']]);
+
 
 Route::post('login', 'ApiController@login');
 Route::post('register', 'ApiController@register');
 
+
 Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('logout', 'ApiController@logout');
+
+    Route::group([
+        'prefix' => 'order'
+    ], function ($router) {
+
+        Route::get('list', 'OrderController@list');
+    });
 
     Route::get('user', 'ApiController@getAuthUser');
 

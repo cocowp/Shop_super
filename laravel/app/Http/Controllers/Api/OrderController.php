@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\User as UserModel;
+use App\Model\Order as OrderModel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
 //        $data = [
@@ -22,6 +19,16 @@ class OrderController extends Controller
 //        ];
 //        $res = UserModel::firstOrCreate($data);
 //        return $res;
+    }
+
+    public function list(){
+
+        $token = request('token');
+        $user = JWTAuth::authenticate($token);
+        $id = $user['id'];
+
+        $order_list = OrderModel::where('user_id', $id)->get();
+        return Controller::Message($order_list);
     }
 
     /**
