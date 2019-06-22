@@ -49,6 +49,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 
     Route::get('user', 'ApiController@getAuthUser');
 
+    Route::post('User_register','RegisterController@register'); //实例接口
+
     Route::get('products', 'ProductController@index');
     Route::get('products/{id}', 'ProductController@show');
     Route::post('products', 'ProductController@store');

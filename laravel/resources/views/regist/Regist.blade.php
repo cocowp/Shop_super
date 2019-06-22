@@ -52,7 +52,7 @@
     </div>
 	<div class="regist">
     	<div class="log_img"><img src="{{ URL::asset('a/images/l_img.png')}}" width="611" height="425" /></div>
-		<div class="reg_c">
+		<div class="reg_c" id="app">
         	<form>
             <table border="0" style="width:420px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
               <tr height="50" valign="top">
@@ -64,11 +64,11 @@
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
-                <td><input type="text" value="" class="l_user" /></td>
+                <td><input type="text" value="" v-model="name" class="l_user" /></td>
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;密码 &nbsp;</td>
-                <td><input type="password" value="" class="l_pwd" /></td>
+                <td><input type="password" value="" v-model="password" class="l_pwd" /></td>
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;确认密码 &nbsp;</td>
@@ -76,38 +76,11 @@
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;邮箱 &nbsp;</td>
-                <td><input type="text" value="" class="l_email" /></td>
-              </tr>
-              <tr height="50">
-                <td align="right"><font color="#ff4e00">*</font>&nbsp;手机 &nbsp;</td>
-                <td><input type="text" value="" class="l_tel" /></td>
-              </tr>
-              <tr height="50">
-                <td align="right">邀请人会员名 &nbsp;</td>
-                <td><input type="text" value="" class="l_mem" /></td>
-              </tr>
-              <tr height="50">
-                <td align="right">邀请人ID号 &nbsp;</td>
-                <td><input type="text" value="" class="l_num" /></td>
-              </tr>
-              <tr height="50">
-                <td align="right"> <font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>
-                <td>
-                    <input type="text" value="" class="l_ipt" />
-                    <a href="#" style="font-size:12px; font-family:'宋体';">换一张</a>
-                </td>
-              </tr>
-              <tr>
-              	<td>&nbsp;</td>
-                <td style="font-size:12px; padding-top:20px;">
-                	<span style="font-family:'宋体';" class="fl">
-                    	<label class="r_rad"><input type="checkbox" /></label><label class="r_txt">我已阅读并接受《用户协议》</label>
-                    </span>
-                </td>
+                <td><input type="text" value="" v-model="email" class="l_email" /></td>
               </tr>
               <tr height="60">
               	<td>&nbsp;</td>
-                <td><input type="submit" value="立即注册" class="log_btn" /></td>
+                <td><input type="button" v-on:click="register" value="立即注册" class="log_btn" /></td>
               </tr>
             </table>
             </form>
@@ -131,3 +104,37 @@
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
 </html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script>
+
+    var vm =   new Vue({
+        el : "#app",
+        data : {
+            name : '',
+            password : '',
+            email : ''
+        },
+        methods:{
+            register:function(){
+                axios
+                    .post('http://www.sho.com/api/register',{
+                        email : this.email,
+                        password : this.password,
+                        name : this.name
+                    })
+                    .then(function (response) {
+                        console.log(response);return
+                        if(response.status == 200)
+                        {
+                            alert("注册成功")
+                            location.href='login'
+                        }
+                    })
+            }
+
+        }
+
+    })
+
+</script>

@@ -210,6 +210,24 @@
                             <cite>菜单列表</cite>
                         </a>
                     </li >
+                    <li>
+                        <a _href="{{'catlist'}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>商品分类管理</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{'attribute_list'}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>商品列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="{{'admin_lists'}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>管理员列表</cite>
+                        </a>
+                    </li >
                 </ul>
             </li>
         </ul>

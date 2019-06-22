@@ -41,6 +41,7 @@ class Commodity_manageController
    }
    public function commodity_list()
    {
+
        $data = DB::table('goods')->get();
 
        foreach ($data as $key => $val){
@@ -52,6 +53,7 @@ class Commodity_manageController
            $classify = DB::table('cat')->where('id',$val->classify)->pluck('name');
 
            $data[$key]->classify_name = $classify[0];
+
        }
 
        return view('base::commodity_manage.commodity_list')->with('data',$data);

@@ -43,7 +43,7 @@ Route::group(['prefix' => 'base'], function () {
 
     Route::get('delete','Store_manageController@delete');
     Route::get('warehouse_list','Store_manageController@warehouse_list');
-    Route::get('admin_lists','Member_manageController@admin_list');
+    Route::get('admin_lists','Member_manageController@admin_lists');
     Route::get('admin_cates','Member_manageController@admin_cate');
     Route::get('admin_roles','Member_manageController@admin_role');
     Route::get('admin_rules','Member_manageController@admin_rule');
