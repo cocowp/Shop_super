@@ -29,15 +29,14 @@
 
     <script type="text/javascript" src="{{ URL::asset('a/js/lrscroll_1.js') }}"></script>
 
-
-    <title>尤洪</title>
+    <title>淘宝</title>
 </head>
 <body>
 <!--Begin Header Begin-->
 <div class="soubg">
     <div class="sou">
         <span class="fr">
-        	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp; </span>
+        	<span class="fl">你好，请<a href="Login.html">登录</a></span>
             <span class="fl">|&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
             <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="images/s_tel.png" align="absmiddle" /></a></span>
@@ -53,7 +52,8 @@
     <div class="login">
         <div class="log_img"><img src="{{ URL::asset('a/images/l_img.png') }}" width="611" height="425" /></div>
         <div class="log_c">
-            <form>
+            <form action="{{route('login')}}" method="post">
+                @csrf
                 <table border="0" style="width:370px; font-size:14px; margin-top:30px;" cellspacing="0" cellpadding="0">
                     <tr height="50" valign="top">
                         <td width="55">&nbsp;</td>
@@ -62,14 +62,22 @@
                             <span class="fr">还没有商城账号，<a href="Regist.html" style="color:#ff4e00;">立即注册</a></span>
                         </td>
                     </tr>
+
                     <tr height="70">
                         <td>用户名</td>
-                        <td><input type="text" value="" class="l_user" /></td>
+                        <td><input type="text" value="{{ old('name') }}" name="name" class="l_user" /></td>
                     </tr>
                     <tr height="70">
                         <td>密&nbsp; &nbsp; 码</td>
-                        <td><input type="password" value="" class="l_pwd" /></td>
+                        <td><input type="password" value="" name="password" class="l_pwd" /></td>
                     </tr>
+                    @if (session('status'))
+                        <tr>
+                            <td></td>
+                            <td colspan="2" style="color: red">* {{ session('status') }}</td>
+                        </tr>
+                    @endif
+
                     <tr>
                         <td>&nbsp;</td>
                         <td style="font-size:12px; padding-top:20px;">

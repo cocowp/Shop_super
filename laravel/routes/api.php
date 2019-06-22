@@ -23,6 +23,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', 'ApiController@login');
 Route::post('register', 'ApiController@register');
 
+//获取商品信息
+Route::group([
+    'prefix' => 'goods'
+], function ($router) {
+
+    Route::get('/hot', 'Api\GoodsController@hot');
+    Route::get('/fruit', 'Api\GoodsController@fruit');
+    Route::get('/product/{id}', 'Api\GoodsController@product');
+});
+
 
 Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('logout', 'ApiController@logout');
@@ -31,7 +41,10 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         'prefix' => 'order'
     ], function ($router) {
 
-        Route::get('list', 'OrderController@list');
+        Route::get('/list', 'OrderController@list');
+        Route::post('/create', 'OrderController@create');
+        Route::get('', 'OrderController@show');
+        Route::post('/edit_order_status','OrderController@edit_order_status');
     });
 
     Route::get('user', 'ApiController@getAuthUser');

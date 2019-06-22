@@ -8,6 +8,10 @@ class Order extends Model
 {
     protected $table = 'order';
 
+    protected $fillable = [
+        'user_id','order_num','consihnee','province','city','district','address','mobile','total_amount'
+    ];
+
     protected $hidden = [
         'user_id',
     ];
@@ -44,5 +48,8 @@ class Order extends Model
             '3' => '货到付款',
         ];
         return $arr[$value];
+    }
+    public function goods(){
+        return $this->belongsToMany('App\Model\Good','order_goods','order_id','id');
     }
 }

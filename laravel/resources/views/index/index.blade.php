@@ -30,7 +30,7 @@
     <script type="text/javascript" src="{{ URL::asset('a/js/lrscroll_1.js') }}"></script>
 
 
-    <title>尤洪</title>
+    <title>淘宝</title>
 </head>
 <body>
 <!--Begin Header Begin-->
@@ -113,7 +113,19 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-        	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
+
+            @if (session('user_info'))
+                <span class="fl">
+                    <a href="{{route('home')}}">用户名</a>
+                </span>
+            @else
+                <span class="fl">
+                    你好，请<a href="{{route('login')}}">登录</a>
+                    &nbsp;   <a href="Regist.html" style="color:#ff4e00;">免费注册</a>
+                    &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
+                </span>
+            @endif
+
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>

@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterAuthRequest;
 use App\User;
 use Illuminate\Http\Request;
-use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\JWT;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ApiController extends Controller
 {
@@ -21,7 +20,6 @@ class ApiController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();
-
         if ($this->loginAfterSignUp) {
             return $this->login($request);
         }
@@ -36,7 +34,6 @@ class ApiController extends Controller
     {
         $input = $request->only('email', 'password');
         $jwt_token = null;
-
         if (!$jwt_token = JWTAuth::attempt($input)) {
             return response()->json([
                 'success' => false,
