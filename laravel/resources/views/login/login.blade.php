@@ -30,7 +30,7 @@
     <script type="text/javascript" src="{{ URL::asset('a/js/lrscroll_1.js') }}"></script>
 
 
-    <title>尤洪</title>
+    <title>超级市场</title>
 </head>
 <body>
 <!--Begin Header Begin-->
@@ -52,7 +52,7 @@
     </div>
     <div class="login">
         <div class="log_img"><img src="{{ URL::asset('a/images/l_img.png') }}" width="611" height="425" /></div>
-        <div class="log_c">
+        <div class="log_c" id="app">
             <form>
                 <table border="0" style="width:370px; font-size:14px; margin-top:30px;" cellspacing="0" cellpadding="0">
                     <tr height="50" valign="top">
@@ -63,12 +63,12 @@
                         </td>
                     </tr>
                     <tr height="70">
-                        <td>用户名</td>
-                        <td><input type="text" value="" class="l_user" /></td>
+                        <td>邮箱</td>
+                        <td><input v-model="name" type="text" value="" class="l_user"/></td>
                     </tr>
                     <tr height="70">
                         <td>密&nbsp; &nbsp; 码</td>
-                        <td><input type="password" value="" class="l_pwd" /></td>
+                        <td><input v-model="pwd" type="password" value="" class="l_pwd" /></td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
@@ -81,7 +81,7 @@
                     </tr>
                     <tr height="60">
                         <td>&nbsp;</td>
-                        <td><input type="submit" value="登录" class="log_btn" /></td>
+                        <td><input v-on:click="logins" type="button" value="登录" class="log_btn" /></td>
                     </tr>
                 </table>
             </form>
@@ -97,11 +97,41 @@
     </div>
 </div>
 <!--End Footer End -->
-
 </body>
-
-
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
 </html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script>
+
+  var vm =   new Vue({
+        el : "#app",
+        data : {
+            name : '请填写邮箱',
+            pwd : '请填写密码',
+            data : ''
+        },
+      methods:{
+            logins:function(){
+                axios
+                    .post('http://www.sho.com/api/login',{
+                        email : this.name,
+                        password : this.pwd,
+                    })
+                    .then(function (response) {
+                        if(response.status == 200)
+                        {
+                            localStorage.lastname=response.data.token
+                            alert("登录成功")
+                            location.href='index'
+                        }
+                    })
+            }
+
+      }
+
+    })
+
+</script>

@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-=======
-use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterAuthRequest;
-use App\User;
->>>>>>> 5a9ab8421b1c948c5d02397e7023a47b635096b2
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
