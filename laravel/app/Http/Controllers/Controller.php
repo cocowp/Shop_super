@@ -11,7 +11,7 @@ use function MongoDB\BSON\toJSON;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public static function Message($data = array()){
+    public static function Message($code = '1000',$msg = '请求成功', $data = array()){
         $arr = [
             'code' => '1000',
             'msg' => '请求成功',

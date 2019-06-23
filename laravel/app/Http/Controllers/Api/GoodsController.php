@@ -11,17 +11,29 @@ class GoodsController extends Controller
 {
     public function hot(){
         $data = GoodModel::orderBy('brower','desc')->limit(5)->get();
-        return Controller::Message($data);
+        if($data){
+            return Controller::Message($data);
+        }else{
+            return Controller::Message('1001','请求失败');
+        }
     }
 
     public function fruit(){
         $data = GoodModel::where('classify','378')->limit(5)->get();
-        return Controller::Message($data);
+        if($data){
+            return Controller::Message($data);
+        }else{
+            return Controller::Message('1001','请求失败');
+        }
     }
 
     public function product($id){
         $data = GoodModel::find($id);
-        return Controller::Message($data);
+        if($data){
+            return Controller::Message($data);
+        }else{
+            return Controller::Message('1001','请求失败');
+        }
     }
 
 
