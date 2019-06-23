@@ -19,7 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route::resource('orders', 'OrderController', ['except' => ['create', 'edit']]);
 
-
 Route::post('login', 'ApiController@login');
 Route::post('register', 'ApiController@register');
 
