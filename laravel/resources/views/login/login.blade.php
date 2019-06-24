@@ -29,12 +29,7 @@
 
     <script type="text/javascript" src="{{ URL::asset('a/js/lrscroll_1.js') }}"></script>
 
-<<<<<<< HEAD
-    <title>淘宝</title>
-=======
-
     <title>超级市场</title>
->>>>>>> 56199a1c1c28d18c51adcd76c1fc4199ff9fefdc
 </head>
 <body>
 <!--Begin Header Begin-->
@@ -56,14 +51,8 @@
     </div>
     <div class="login">
         <div class="log_img"><img src="{{ URL::asset('a/images/l_img.png') }}" width="611" height="425" /></div>
-<<<<<<< HEAD
-        <div class="log_c">
-            <form action="{{route('login')}}" method="post">
-                @csrf
-=======
         <div class="log_c" id="app">
             <form>
->>>>>>> 56199a1c1c28d18c51adcd76c1fc4199ff9fefdc
                 <table border="0" style="width:370px; font-size:14px; margin-top:30px;" cellspacing="0" cellpadding="0">
                     <tr height="50" valign="top">
                         <td width="55">&nbsp;</td>
@@ -72,30 +61,14 @@
                             <span class="fr">还没有商城账号，<a href="Regist.html" style="color:#ff4e00;">立即注册</a></span>
                         </td>
                     </tr>
-
                     <tr height="70">
-<<<<<<< HEAD
-                        <td>用户名</td>
-                        <td><input type="text" value="{{ old('name') }}" name="name" class="l_user" /></td>
-                    </tr>
-                    <tr height="70">
-                        <td>密&nbsp; &nbsp; 码</td>
-                        <td><input type="password" value="" name="password" class="l_pwd" /></td>
-=======
                         <td>邮箱</td>
                         <td><input v-model="name" type="text" value="" class="l_user"/></td>
                     </tr>
                     <tr height="70">
                         <td>密&nbsp; &nbsp; 码</td>
                         <td><input v-model="pwd" type="password" value="" class="l_pwd" /></td>
->>>>>>> 56199a1c1c28d18c51adcd76c1fc4199ff9fefdc
                     </tr>
-                    @if (session('status'))
-                        <tr>
-                            <td></td>
-                            <td colspan="2" style="color: red">* {{ session('status') }}</td>
-                        </tr>
-                    @endif
 
                     <tr>
                         <td>&nbsp;</td>
@@ -138,7 +111,6 @@
         data : {
             name : '请填写邮箱',
             pwd : '请填写密码',
-            data : ''
         },
       methods:{
             logins:function(){
