@@ -100,7 +100,7 @@
                     <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
                 </td>
                 <td>{{$order['order_num']}}</td>
-                <td>{{$order['user_id']}}</td>
+                <td>{{$order['consihnee']}}</td>
                 <td>{{$order['goods_price']}}</td>
                 <td>{{$order['order_amount']}}</td>
                 <td>
@@ -109,7 +109,7 @@
                 <td>{{$order['pay_status']}}</td>
                 <td>{{$order['shipping_status']}}</td>
                 <td>{{$order['pay_name']}}</td>
-                <td>申通物流</td>
+                <td>{{$order['shipping_name']}}</td>
                 <td>{{$order['created_at']}}</td>
                 <td class="td-manage">
                     <button class="layui-btn layui-btn-normal" onclick="x_admin_show('编辑','{{route('order/edit',['id'=>$order['id']])}}')">编辑</button>

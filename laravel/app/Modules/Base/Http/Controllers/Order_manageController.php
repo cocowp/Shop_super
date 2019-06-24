@@ -9,13 +9,13 @@
 namespace App\Modules\Base\Http\Controllers;
 
 use App\Modules\Base\Model\Order;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class Order_manageController
 {
    public function lists(Request $request)
    {
-       $search =Request::input();
+       $search =$request->input();
        $where = [];
 
        if(isset($search['start']) && !empty($search['start'])){
@@ -36,7 +36,7 @@ class Order_manageController
        if(isset($search['order_num']) && !empty($search['order_num'])){
             $where[] = ['order_num',$search['order_num']];
        }
-       $orders = Order::with('user')->where($where)->orderBy('created_at','desc')->paginate(10)->appends($request->all());
+       $orders = Order::where($where)->orderBy('created_at','desc')->paginate(10)->appends($request->all());
 
        $count = Order::where($where)->count();
        return view('base::order.list')->with('orders',$orders)->with('search',$search)->with('count',$count);
@@ -53,9 +53,9 @@ class Order_manageController
            }
        }
    }
-   public function edit(){
-       if(Request::isMethod('post')){
-           $data = Request::all();
+   public function edit(Request $request){
+       if($request->isMethod('post')){
+           $data = $request->all();
            unset($data['_token']);
            $id = $data['id'];
            unset($data['id']);
@@ -66,7 +66,7 @@ class Order_manageController
                 return "修改失败";
            }
        }
-       $id = Request::input('id');
+       $id = $request->input('id');
        $order = Order::find($id);
        return view('base::order.edit')->with('order',$order);
    }

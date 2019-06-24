@@ -27,19 +27,19 @@
         <input type="hidden" name="id" value="{{$order['id']}}">
         <div class="layui-form-item">
             <label for="username" class="layui-form-label">
-                <span class="x-red">*</span>用户名
-            </label>
-{{--            <div class="layui-input-inline">--}}
-{{--                <input type="text" id="username" name="username" value="{{$order['user_id']}}" required="" lay-verify="required"--}}
-{{--                       autocomplete="off" class="layui-input">--}}
-{{--            </div>--}}
-        </div>
-        <div class="layui-form-item">
-            <label for="username" class="layui-form-label">
-                <span class="x-red">*</span>收货人
+                <span class="x-red">*</span>创建用户
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="username" name="user_id" value="{{$order['user_id']}}" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input layui-disabled"  readonly="readonly">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="username" class="layui-form-label">
+                <span class="x-red">*</span>收货人姓名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="username" name="consihnee" value="{{$order['consihnee']}}" required="" lay-verify="required"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -82,8 +82,8 @@
             </label>
             <div class="layui-input-inline">
                 <select id="shipping" name="shipping_name" class="valid">
-                    <option value="shentong">申通物流</option>
-                    <option value="shunfeng">顺丰物流</option>
+                    <option value="申通物流" {{$order['shipping_name'] == '申通物流'?'selected':''}}>申通物流</option>
+                    <option value="顺丰物流" {{$order['shipping_name'] == '顺丰物流'?'selected':''}}>顺丰物流</option>
                 </select>
             </div>
         </div>

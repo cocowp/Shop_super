@@ -77,7 +77,7 @@ class OrderController extends Controller
         });
 
         if($dbres == 1){
-            return Controller::Message();
+            return Controller::Message(g);
         }else{
             return Controller::Message('1002','请求失败');
 
