@@ -652,15 +652,10 @@
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <script>
-        let vm = new Vue({
+        var vm = new Vue({
             el:'#hot',
             data:{
-                name:'',
-                pic:'',
-                actor:'',
-                detail:'',
-                link:'',
-                hot : '123'
+                hot : ''
             },
             mounted:function () {
                 this.getMovie();
@@ -668,9 +663,9 @@
             methods:{
                 getMovie:function () {
                     var _this = this;
-                    let url = 'http://www.sho.com/api/goods/hot?token='+localStorage.lastname;
+                    var url = 'http://www.sho.com/api/goods/hot?token='+localStorage.lastname;
                     axios.get(url).then(function (res) {
-                       this.hot =  res.data.data;
+                       console.log(res.data.data);
                     })
                 },
                 goLink:function () {
