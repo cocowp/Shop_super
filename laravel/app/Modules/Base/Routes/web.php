@@ -59,10 +59,14 @@ Route::group(['prefix' => 'base'], function () {
     Route::get('/getchild','Goodscategory_manageController@getchild');
     Route::post('/addchild','Goodscategory_manageController@addchild');
     
-	Route::any('moneyoff_acticity','Active_manageController@moneyoff_acticity');
-	Route::any('discount_coupon','Active_manageController@discount_coupon');
-	Route::any('full_give','Active_manageController@full_give');
-	
+	Route::any('/act_list','Active_manageController@lists')->name('active/list');
+	Route::any('/act_create','Active_manageController@create')->name('active/create');
+    Route::any('/act_del','Active_manageController@del')->name('active/del');
+    Route::any('/act_edit_status','Active_manageController@edit_status')->name('active/edit_status');
+    Route::any('/act_edit','Active_manageController@edit')->name('active/edit');
+
+
+
 	Route::any('add','Brand_manageController@add');
 	Route::any('lists','Brand_manageController@lists');
 

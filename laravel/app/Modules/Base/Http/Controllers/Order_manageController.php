@@ -8,6 +8,7 @@
 
 namespace App\Modules\Base\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Modules\Base\Model\Order;
 use Illuminate\Http\Request;
 
@@ -42,14 +43,14 @@ class Order_manageController
        return view('base::order.list')->with('orders',$orders)->with('search',$search)->with('count',$count);
    }
 
-   public function del(){
-       if(Request::ajax()){
-           $id = Request::input('id');
+   public function del(Request $request){
+       if($request->ajax()){
+           $id = $request->input('id');
            $res = Order::destroy($id);
            if($res){
-               return json_encode(['code'=>'100']);
+               return Controller::Message();
            }else{
-               return json_encode(['code'=>'200']);
+               return Controller::Message('1001','请求失败');
            }
        }
    }
