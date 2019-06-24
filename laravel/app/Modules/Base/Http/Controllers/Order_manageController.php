@@ -13,12 +13,33 @@ use Illuminate\Support\Facades\Request;
 
 class Order_manageController
 {
-
-
-   public function lists()
+   public function lists(Request $request)
    {
-       $orders = Order::orderBy('created_at','desc')->paginate(10);
-       return view('base::order.list')->with('orders',$orders);
+       $search =Request::input();
+       $where = [];
+
+       if(isset($search['start']) && !empty($search['start'])){
+           $where[] = ['created_at', '>=', $search['start']];
+       }
+
+       if(isset($search['end']) && !empty($search['end'])){
+           $where[] = ['created_at', '<=', $search['end']];
+       }
+
+       if(isset($search['pay_status']) && strlen($search['pay_status'])){
+            $where[] = ['pay_status',$search['pay_status']];
+       }
+       if(isset($search['pay_name']) && strlen($search['pay_name'])){
+           $where[] = ['pay_name',$search['pay_name']];
+       }
+
+       if(isset($search['order_num']) && !empty($search['order_num'])){
+            $where[] = ['order_num',$search['order_num']];
+       }
+       $orders = Order::with('user')->where($where)->orderBy('created_at','desc')->paginate(10)->appends($request->all());
+
+       $count = Order::where($where)->count();
+       return view('base::order.list')->with('orders',$orders)->with('search',$search)->with('count',$count);
    }
 
    public function del(){
@@ -32,7 +53,6 @@ class Order_manageController
            }
        }
    }
-
    public function edit(){
        if(Request::isMethod('post')){
            $data = Request::all();

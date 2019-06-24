@@ -4,12 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterAuthRequest;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
-use App\Http\Controllers\Controller;
 use App\User;
-use JWTAuth;
->>>>>>> 56199a1c1c28d18c51adcd76c1fc4199ff9fefdc
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
