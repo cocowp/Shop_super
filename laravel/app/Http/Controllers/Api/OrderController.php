@@ -14,13 +14,7 @@ class OrderController extends Controller
 
     public function index()
     {
-//        $data = [
-//            'login_name' => 'lx123',
-//            'mobile' => '17600985221',
-//            'password' => md5('lx123'),
-//        ];
-//        $res = UserModel::firstOrCreate($data);
-//        return $res;
+//
     }
 
     public function list(){
@@ -29,7 +23,11 @@ class OrderController extends Controller
         $id = $user['id'];
 
         $order_list = OrderModel::where('user_id', $id)->get();
-        return Controller::Message($order_list);
+        if($order_list){
+            return Controller::Message($order_list);
+        }else{
+            return Controller::Message('1002','请求失败');
+        }
     }
 
     /**
@@ -55,6 +53,7 @@ class OrderController extends Controller
         $order_goods = $data['goodsItems'];
 
         //进行事务处理
+        $dbres = 0;
         DB::transaction(function () use($order,$order_goods) {
             //订单表数据入库
             $orderres = OrderModel::create($order);
@@ -73,11 +72,16 @@ class OrderController extends Controller
                     $goods->save();
                 }
             }
+            $dbres = 1;
 //            运行到此处数据库修改操作完成 返回请求送成功
         });
-        return Controller::Message();
 
-        //        return json_encode(['code'=>'1002','msg'=>'请求失败']);
+        if($dbres == 1){
+            return Controller::Message();
+        }else{
+            return Controller::Message('1002','请求失败');
+
+        }
     }
 
     /**
@@ -103,7 +107,12 @@ class OrderController extends Controller
     {
         $order_num = request('order_num');
         $data = OrderModel::with(['goods'])->where("order_num",$order_num)->get();
-        return Controller::Message($data);
+
+        if($data){
+            return Controller::Message($data);
+        }else{
+            return Controller::Message('1002','请求失败');
+        }
     }
 
     /**
