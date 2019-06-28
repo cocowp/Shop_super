@@ -112,19 +112,17 @@
             </span>
         </span>
         <!--End 所在收货地区 End-->
-        <span class="fr">
-
-            @if (session('user_info'))
-                <span class="fl">
-                    <a href="{{route('home')}}">用户名</a>
-                </span>
-            @else
-                <span class="fl">
+        <span class="fr" id="users">
+                <span class="fl" v-if="trues">
                     你好，请<a href="{{route('login')}}">登录</a>
                     &nbsp;   <a href="Regist.html" style="color:#ff4e00;">免费注册</a>
                     &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
                 </span>
-            @endif
+                <span class="fl" v-else>
+                         <a href="#">@{{ uname.name }}</a>
+                    &nbsp;   <a href="Regist.html" style="color:#ff4e00;">免费注册</a>
+                    &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
+                </span>
 
         	<span class="ss">
             	<div class="ss_list">
@@ -549,26 +547,8 @@
         <div id="featureContainer1">
             <div id="feature1">
                 <div id="block1">
-                    <div id="botton-scroll1 hot" style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 1200px;">
+                    <div id="botton-scroll1" style="visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 1200px;">
                         <ul class="featureUL" style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; width: 3600px; left: -2400px;">
-                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
-                                <div class="box">
-                                    <div class="h_icon"><img width="50" height="50" src="{{ URL::asset('a/images/hot.png') }}">
-                                    </div>
-                                    <div class="imgbg">
-                                        <a href="javascript:void(0)"><img width="160" height="136" src="{{ URL::asset('a/images/hot1.jpg') }}"></a>
-                                    </div>
-                                    <div class="name">
-                                        <a href="javascript:void(0)">
-                                            <h2>德国进口</h2>
-                                            德亚全脂纯牛奶200ml*48盒
-                                        </a>
-                                    </div>
-                                    <div class="price">
-                                        <font>￥<span>189</span></font> &nbsp; 26R
-                                    </div>
-                                </div>
-                            </li>
                             <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
                                 <div class="box">
                                     <div class="h_icon"><img width="50" height="50" src="{{ URL::asset('a/images/hot.png') }}">
@@ -641,6 +621,24 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="featureBox" style="overflow: hidden; float: left; width: 238px; height: 228px;">
+                                <div class="box">
+                                    <div class="h_icon"><img width="50" height="50" src="{{ URL::asset('a/images/hot.png') }}">
+                                    </div>
+                                    <div class="imgbg">
+                                        <a href="javascript:void(0)"><img width="160" height="136" src="{{ URL::asset('a/images/hot4.jpg') }}"></a>
+                                    </div>
+                                    <div class="name">
+                                        <a href="javascript:void(0)">
+                                            <h2>品利特级橄榄油</h2>
+                                            750ml*4瓶装组合 西班牙原装进口
+                                        </a>
+                                    </div>
+                                    <div class="price">
+                                        <font>￥<span>280</span></font> &nbsp; 30R
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -649,33 +647,6 @@
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
-    <script>
-        var vm = new Vue({
-            el:'#hot',
-            data:{
-                hot : ''
-            },
-            mounted:function () {
-                this.getMovie();
-            },
-            methods:{
-                getMovie:function () {
-                    var _this = this;
-                    var url = 'http://www.sho.com/api/goods/hot?token='+localStorage.lastname;
-                    axios.get(url).then(function (res) {
-                       console.log(res.data.data);
-                    })
-                },
-                goLink:function () {
-                    var _this = this;
-                    window.location.href = _this.link;
-                }
-            },
-        })
-
-    </script>
 
     <div class="content mar_20">
         <img src="images/mban_1.jpg" width="1200" height="110" />
@@ -686,65 +657,16 @@
         <span class="fl">进口 <b>·</b> 生鲜</span>
         <span class="i_mores fr"><a href="#">进口咖啡</a>&nbsp; &nbsp; &nbsp; <a href="#">进口酒</a>&nbsp; &nbsp; &nbsp; <a href="#">进口母婴</a>&nbsp; &nbsp; &nbsp; <a href="#">新鲜蔬菜</a>&nbsp; &nbsp; &nbsp; <a href="#">新鲜水果</a></span>
     </div>
-    <div class="content">
+    <div id="hot" class="content">
 
         <div class="fresh_mid">
             <ul>
-                <li>
-                    <div class="name"><a href="#">新鲜美味  进口美食</a></div>
+                <li v-for="das in hot">
+                    <div class="name"><a href="#">@{{ das.name }}</a></div>
                     <div class="price">
-                        <font>￥<span>198.00</span></font> &nbsp; 26R
+                        <font>￥<span> @{{ das.prices }} </span></font> &nbsp; 26R
                     </div>
-                    <div class="img"><a href="#"><img src="{{ URL::asset('a/images/fre_1.jpg') }}" width="185" height="155" /></a></div>
-                </li>
-                <li>
-                    <div class="name"><a href="#">新鲜美味  进口美食</a></div>
-                    <div class="price">
-                        <font>￥<span>198.00</span></font> &nbsp; 26R
-                    </div>
-                    <div class="img"><a href="#"><img src="{{ URL::asset('a/images/fre_2.jpg') }}" width="185" height="155" /></a></div>
-                </li>
-                <li>
-                    <div class="name"><a href="#">新鲜美味  进口美食</a></div>
-                    <div class="price">
-                        <font>￥<span>198.00</span></font> &nbsp; 26R
-                    </div>
-                    <div class="img"><a href="#"><img src="{{ URL::asset('a/images/fre_3.jpg') }}" width="185" height="155" /></a></div>
-                </li>
-                <li>
-                    <div class="name"><a href="#">新鲜美味  进口美食</a></div>
-                    <div class="price">
-                        <font>￥<span>198.00</span></font> &nbsp; 26R
-                    </div>
-                    <div class="img"><a href="#"><img src="{{ URL::asset('a/images/fre_4.jpg') }}" width="185" height="155" /></a></div>
-                </li>
-                <li>
-                    <div class="name"><a href="#">新鲜美味  进口美食</a></div>
-                    <div class="price">
-                        <font>￥<span>198.00</span></font> &nbsp; 26R
-                    </div>
-                    <div class="img"><a href="#"><img src="{{ URL::asset('a/images/fre_1.jpg') }}" width="185" height="155" /></a></div>
-                </li>
-                <li>
-                    <div class="name"><a href="#">新鲜美味  进口美食</a></div>
-                    <div class="price">
-                        <font>￥<span>198.00</span></font> &nbsp; 26R
-                    </div>
-                    <div class="img"><a href="#"><img src="{{ URL::asset('a/images/fre_5.jpg') }}" width="185" height="155" /></a></div>
-                </li>
-                <li>
-                    <div class="name"><a href="#">新鲜美味  进口美食</a></div>
-                    <div class="price">
-                        <font>￥<span>198.00</span></font> &nbsp; 26R
-                    </div>
-                    <div class="img"><a href="#"><img src="{{ URL::asset('a/images/fre_6.jpg') }}" width="185" height="155" /></a></div>
-                </li>
-                <li>
-                    <div class="name"><a href="#">新鲜美味  进口美食</a></div>
-                    <div class="price">
-                        <font>￥<span>198.00</span></font> &nbsp; 26R
-                    </div>
-                    <div class="img"><a href="#"><img src="{{ URL::asset('a/images/fre_5.jpg') }}" width="185" height="155" /></a></div>
+                    <div class="img"><a href="#"><img :src="das.imgs" width="185" height="155" /></a></div>
                 </li>
                 <li>
                     <div class="name"><a href="#">新鲜美味  进口美食</a></div>
@@ -1257,7 +1179,49 @@
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
 </html>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 <script>
-    console.log(localStorage.lastname)
+
+
+    var alls = new Vue({
+
+        el:"#users",
+        data:{
+            trues : true,
+            uname : '',
+        },
+        mounted:function () {
+            this.uname = JSON.parse(localStorage.getItem('user'))
+            this.trues = false;
+        }
+    })
+
+    var vm = new Vue({
+        el:'#hot',
+        data:{
+            hot : '',
+            nbm : "HAHA"
+        },
+        mounted:function () {
+            this.getMovie();
+        },
+        methods:{
+            getMovie:function () {
+                var _this = this;
+                var url = 'http://www.sho.com/api/goods/hot?token='+localStorage.lastname;
+                axios.get(url).then(function (res) {
+                    _this.hot = res.data.data;
+//                    console.log(vm.hot)
+                })
+            },
+            goLink:function () {
+                var _this = this;
+                window.location.href = _this.link;
+            }
+        },
+    })
 
 </script>
+

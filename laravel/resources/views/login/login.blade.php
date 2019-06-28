@@ -122,12 +122,22 @@
                     .then(function (response) {
                         if(response.status == 200)
                         {
+                            var url = 'http://www.sho.com/api/user?token='+response.data.token;
+                            axios.get(url).then(function (res) {
+
+                                user = JSON.stringify(res.data.user)
+
+                                localStorage.setItem('user',user) ;
+
+//                                console.log(localStorage.getItem('user'))
+
+                            })
                             localStorage.lastname=response.data.token
                             alert("登录成功")
                             location.href='index'
                         }
                     })
-            }
+            },
 
         }
 
