@@ -12,7 +12,7 @@ class GoodsController extends Controller
     public function hot(){
         $data = GoodModel::orderBy('brower','desc')->limit(5)->get();
         if($data){
-            return Controller::Message('','',$data);
+            return Controller::Message('1000','请求成功',$data);
         }else{
             return Controller::Message('1001','请求失败');
         }
@@ -21,7 +21,7 @@ class GoodsController extends Controller
     public function fruit(){
         $data = GoodModel::where('classify','378')->limit(5)->get();
         if($data){
-            return Controller::Message('','',$data);
+            return Controller::Message('1000','请求成功',$data);
         }else{
             return Controller::Message('1001','请求失败');
         }
@@ -30,7 +30,7 @@ class GoodsController extends Controller
     public function product($id){
         $data = GoodModel::find($id);
         if($data){
-            return Controller::Message('','',$data);
+            return Controller::Message('1000','请求成功',$data);
         }else{
             return Controller::Message('1001','请求失败');
         }

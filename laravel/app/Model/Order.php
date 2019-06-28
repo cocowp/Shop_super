@@ -3,9 +3,11 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
+    use SoftDeletes;
     protected $table = 'order';
 
     protected $fillable = [
@@ -13,7 +15,7 @@ class Order extends Model
     ];
 
     protected $hidden = [
-        'user_id',
+        'user_id','created_at','updated_at','deleted_at'
     ];
     protected function getOrderStatusAttribute($value){
         $arr = [

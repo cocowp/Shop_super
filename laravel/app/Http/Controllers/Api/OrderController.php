@@ -11,7 +11,6 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class OrderController extends Controller
 {
-
     public function index()
     {
 //
@@ -24,9 +23,9 @@ class OrderController extends Controller
 
         $order_list = OrderModel::where('user_id', $id)->get();
         if($order_list){
-            return Controller::Message('','',$order_list);
+            return Controller::Message('1000','请求成功',$order_list);
         }else{
-            return Controller::Message('1002','请求失败');
+            return Controller::Message('1001','请求失败');
         }
     }
 
@@ -35,6 +34,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $status = 0;
     public function create()
     {
         $token = request('token');
@@ -53,7 +53,6 @@ class OrderController extends Controller
         $order_goods = $data['goodsItems'];
 
         //进行事务处理
-        $dbres = 0;
         DB::transaction(function () use($order,$order_goods) {
             //订单表数据入库
             $orderres = OrderModel::create($order);
@@ -72,15 +71,15 @@ class OrderController extends Controller
                     $goods->save();
                 }
             }
-            $dbres = 1;
+            $this->status = 1;
+
 //            运行到此处数据库修改操作完成 返回请求送成功
         });
 
-        if($dbres == 1){
-            return Controller::Message(g);
+        if($this->status == 1){
+            return Controller::Message();
         }else{
-            return Controller::Message('1002','请求失败');
-
+            return Controller::Message('1001','请求失败');
         }
     }
 
@@ -105,13 +104,21 @@ class OrderController extends Controller
     // 通过订单编号来获取订单的详细信息
     public function show()
     {
-        $order_num = request('order_num');
-        $data = OrderModel::with(['goods'])->where("order_num",$order_num)->get();
+        $token = request('token');
+        $user = JWTAuth::authenticate($token);
+        $id = $user['id'];
 
-        if($data){
-            return Controller::Message($data);
+        $order_num = request('order_num');
+
+        $where = [];
+        $where[] = ['user_id', '=', $id];
+        $where[] = ['order_num', $order_num];
+
+        $data = OrderModel::with(['goods'])->where($where)->get();
+        if(count($data)>0){
+            return Controller::Message('1000','请求成功',$data);
         }else{
-            return Controller::Message('1002','请求失败');
+            return Controller::Message('1001','请求失败,（请获取当前登录用户的订单）');
         }
     }
 
@@ -123,8 +130,31 @@ class OrderController extends Controller
      */
     public function edit_order_status()
     {
+        $token = request('token');
         $order_num = request('order_num');
-        $data = OrderModel::with(['goods'])->where("order_num",$order_num)->get();
+
+        $user = JWTAuth::authenticate($token);
+        $id = $user['id'];
+
+        $where = [];
+        $where[] = ['user_id', '=', $id];
+        $where[] = ['order_num', $order_num];
+
+        $arr = ['-3','-2','-1','0','1','2'];
+        $order_status = request('status');
+        if(!in_array($order_status,$arr)){
+            return Controller::Message('1001','请求失败（不存在此订单状态）');
+        }
+        $data = [
+            'order_status' => $order_status
+        ];
+
+        $res = OrderModel::where($where)->update($data);
+        if($res){
+            return Controller::Message();
+        }else{
+            return Controller::Message('1001','请求失败');
+        }
     }
 
     /**
@@ -145,8 +175,14 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $id = request('id');
+        $res = OrderModel::destroy($id);
+        if($res){
+            return Controller::Message();
+        }else{
+            return Controller::Message('1001','请求失败');
+        }
     }
 }
