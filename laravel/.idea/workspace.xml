@@ -51,8 +51,8 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/index/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="1215" column="18" lean-forward="true" selection-start-line="1215" selection-start-column="18" selection-end-line="1215" selection-end-column="18" />
+            <state relative-caret-position="669">
+              <caret line="1215" column="18" lean-forward="false" selection-start-line="1215" selection-start-column="18" selection-end-line="1215" selection-end-column="18" />
               <folding>
                 <marker date="1561948849013" expanded="true" signature="298:329" ph="..." />
                 <marker date="1561948849013" expanded="true" signature="374:403" ph="..." />
@@ -257,11 +257,11 @@
         <option value="$PROJECT_DIR$/app/Modules/Base/Resources/Views/index/index.blade.php" />
         <option value="$PROJECT_DIR$/public/a/js/lrscroll_1.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" />
-        <option value="$PROJECT_DIR$/resources/views/index/index.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
         <option value="$PROJECT_DIR$/resources/views/login/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/index/user.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/index/index.blade.php" />
       </list>
     </option>
   </component>
@@ -721,12 +721,12 @@
       <workItem from="1561077651421" duration="13438000" />
       <workItem from="1561165098151" duration="3325000" />
       <workItem from="1561288292168" duration="24905000" />
-      <workItem from="1561941201000" duration="17258000" />
+      <workItem from="1561941201000" duration="17453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80796000" />
+    <option name="totallyTimeSpent" value="80991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="709" y="112" width="1592" height="945" extended-state="0" />
@@ -1176,8 +1176,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/index/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="1215" column="18" lean-forward="true" selection-start-line="1215" selection-start-column="18" selection-end-line="1215" selection-end-column="18" />
+        <state relative-caret-position="669">
+          <caret line="1215" column="18" lean-forward="false" selection-start-line="1215" selection-start-column="18" selection-end-line="1215" selection-end-column="18" />
           <folding>
             <marker date="1561948849013" expanded="true" signature="298:329" ph="..." />
             <marker date="1561948849013" expanded="true" signature="374:403" ph="..." />
