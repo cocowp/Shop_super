@@ -39,11 +39,12 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group([
         'prefix' => 'order'
     ], function ($router) {
-
         Route::get('/list', 'OrderController@list');
         Route::post('/create', 'OrderController@create');
         Route::get('', 'OrderController@show');
         Route::post('/edit_order_status','OrderController@edit_order_status');
+        Route::post('/del_order', 'OrderController@destroy');
+
     });
 
     Route::get('user', 'ApiController@getAuthUser');
