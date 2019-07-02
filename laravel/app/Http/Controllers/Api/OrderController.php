@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Model\Good as GoodModel;
 use App\Model\Order as OrderModel;
 use App\Model\Order_goods;
