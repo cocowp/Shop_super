@@ -116,11 +116,9 @@
                 <span class="fl" v-if="trues">
                     你好，请<a href="{{route('login')}}">登录</a>
                     &nbsp;   <a href="Regist" style="color:#ff4e00;">免费注册</a>
-                    &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
                 </span>
                 <span class="fl" v-else>
                          <a href="{{route('user')}}">@{{ uname.name }}</a>
-                    &nbsp;   <a href="{{route('regist')}}" style="color:#ff4e00;">免费注册</a>
                     &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
                 </span>
 

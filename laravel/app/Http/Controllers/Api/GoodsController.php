@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Model\Attr as AttrModel;
 use App\Model\Good as GoodModel;
 use App\Model\Good;
-use App\Model\Order_goods;
 
 class GoodsController extends Controller
 {
