@@ -115,7 +115,7 @@
         <span class="fr" id="users">
                 <span class="fl" v-if="trues">
                     你好，请<a href="{{route('login')}}">登录</a>
-                    &nbsp;   <a href="Regist" style="color:#ff4e00;">免费注册</a>
+                    &nbsp;   <a href="{{route('regist')}}" style="color:#ff4e00;">免费注册</a>
                     &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
                 </span>
                 <span class="fl" v-else>
@@ -1192,7 +1192,7 @@
             uname : '',
         },
         mounted:function () {
-            this.uname = JSON.parse(localStorage.getItem('user'))
+            this.uname = JSON.parse(sessionStorage.getItem('user'))
             this.trues = false;
         }
     })
