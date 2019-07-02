@@ -115,12 +115,12 @@
         <span class="fr" id="users">
                 <span class="fl" v-if="trues">
                     你好，请<a href="{{route('login')}}">登录</a>
-                    &nbsp;   <a href="Regist.html" style="color:#ff4e00;">免费注册</a>
+                    &nbsp;   <a href="Regist" style="color:#ff4e00;">免费注册</a>
                     &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
                 </span>
                 <span class="fl" v-else>
-                         <a href="#">@{{ uname.name }}</a>
-                    &nbsp;   <a href="Regist.html" style="color:#ff4e00;">免费注册</a>
+                         <a href="{{route('user')}}">@{{ uname.name }}</a>
+                    &nbsp;   <a href="{{route('regist')}}" style="color:#ff4e00;">免费注册</a>
                     &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
                 </span>
 
@@ -132,7 +132,6 @@
                         <div class="ss_list_c">
                         	<ul>
                             	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>

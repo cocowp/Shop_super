@@ -22,6 +22,7 @@ Route::get('hello',function (){
 Route::any('/login','LoginController@login')->name('login');
 Route::get('/index','IndexController@index');
 Route::get('/buycar','BuycarController@index');
-Route::get('/regist','RegistController@index');
+Route::get('/regist','RegistController@index')->name('regist');
+Route::get('/user','IndexController@userinfo')->name('user');
 
 

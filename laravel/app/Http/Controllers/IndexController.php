@@ -16,4 +16,9 @@ class IndexController
     {
         return view('index.index');
     }
+
+    public function userinfo()
+    {
+        return view('index.user');
+    }
 }
