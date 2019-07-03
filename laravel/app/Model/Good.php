@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Good extends Model
 {
     protected $hidden = [
-        'id','num','created_at','updated_at','deleted_at','pivot'
+        'num','created_at','updated_at','deleted_at','pivot'
     ];
 
 

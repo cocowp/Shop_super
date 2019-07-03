@@ -1171,7 +1171,6 @@
 
 </body>
 
-
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
@@ -1180,7 +1179,6 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 <script>
-
 
     var alls = new Vue({
 

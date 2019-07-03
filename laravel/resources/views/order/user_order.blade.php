@@ -9,12 +9,21 @@
         EvPNG.fix('div, ul, img, li, input, a');
     </script>
     <![endif]-->
-
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <script type="text/javascript" src="{{ URL::asset('a/js/jquery-1.8.2.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('a/js/menu.js') }}"></script>
 
     <script type="text/javascript" src="{{ URL::asset('a/js/select.js') }}"></script>
     <title>尤洪</title>
+    <style>
+        .m_right ul li{
+            border-bottom: 2px solid lightsteelblue;
+        }
+        .m_right ul li span{
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 <!--Begin Header Begin-->
@@ -237,36 +246,35 @@
         <div class="m_right">
             <p></p>
             <div class="mem_tit">我的订单</div>
-            <table border="0" class="order_tab" style="width:930px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="20%">订单号</td>
-                    <td width="25%">下单时间</td>
-                    <td width="15%">订单总金额</td>
-                    <td width="25%">订单状态</td>
-                    <td width="15%">操作</td>
-                </tr>
-
-                <li >
-                    <div class="name"><a href="#">@{{ das.name }}</a></div>
-                    <div class="price">
-                        <font>￥<span> @{{ das.prices }} </span></font> &nbsp; 26R
+                <ul>
+                    <li>
+                        <span style="padding: 30px 150px 30px 150px;font-size: 16px">订单号</span>
+                        <span style="padding: 30px 10px 30px 30px;font-size: 16px">下单时间</span>
+                        <span style="padding: 30px 0px 30px 80px;font-size: 16px">订单总金额</span>
+                        <span style="padding: 30px 0px 30px 50px;font-size: 16px">订单状态</span>
+                        <span style="padding: 30px 0px 30px 50px;font-size: 16px">操作</span>
+                    </li>
+                    <div id="example">
+                        <li v-for="order in orders">
+                            <span style="padding: 30px 50px 30px 50px;font-size: 14px;color:#ff4e00" >@{{order.order_num}}</span>
+                            <span style="padding: 30px 0px 30px 0px;font-size: 14px">@{{ order.created_at }}</span>
+                            <span style="padding: 30px 0px 30px 52px;font-size: 14px">￥ @{{ order.total_amount }}</span>
+                            <span style="padding: 30px 0px 30px 66px;font-size: 14px" id="ostatus">@{{ order.shipping_status }}</span>
+                            <span style="padding: 30px 0px 30px 66px;font-size: 14px">
+                                <button v-on:click="edit()">取消</button>
+                            </span>
+                        </li>
                     </div>
-                    <div class="img"><a href="#"><img :src="das.imgs" width="185" height="155" /></a></div>
-                </li>
-
-                <span id="order">
-                    <tr v-for="order in order_list">
-                        <td><font color="#ff4e00">@{{  order.order_num }}</font></td>
-                        <td>@{{ order.created_at }}</td>
-                        <td>￥ @{{ order.price }}</td>
-                        <td>@{{ order.shipping_status }}</td>
-                        <td>取消订单</td>
-                    </tr>
-                </span>
-            </table>
-
-
-
+                </ul>
+{{--                <div id="example">--}}
+{{--                    <tr v-for="order in orders">--}}
+{{--                        <td><span></span></td>--}}
+{{--                        <td></td>--}}
+{{--                        <td></td>--}}
+{{--                        <td> </td>--}}
+{{--                        取消订单--}}
+{{--                    </tr>--}}
+{{--                </div>--}}
         </div>
     </div>
     <!--End 用户中心 End-->
@@ -360,8 +368,7 @@
 </div>
 
 </body>
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+
 <script>
     var alls = new Vue({
 
@@ -376,8 +383,8 @@
         }
     })
 
-    var order_list = new Vue({
-        el:'#order',
+    var user_order = new Vue({
+        el:'#example',
         data:{
             orders : ''
         },
@@ -389,18 +396,48 @@
                 var _this = this;
                 var url = 'http://www.sho.com/api/order/list?token='+localStorage.lastname;
                 axios.get(url).then(function (res) {
-                   console.log(res.data.data);
-
-                    // _this.orders = res.data.data;
-//                    console.log(vm.hot)
+                    _this.orders = res.data.data;
+                    // console.log(user_order.orders);
                 })
             },
             goLink:function () {
                 var _this = this;
                 window.location.href = _this.link;
+            },
+            edit:function(e){
+
+                console.log(e);return;
+                axios
+                    .post('http://www.sho.com/api/order/edit_order_status',{
+                        token : localStorage.lastname,
+                        order_num : this.order_num,
+                    })
+                    .then(function (response) {
+                        if(response.status == 200)
+                        {
+                            var url = 'http://www.sho.com/api/user?token='+response.data.token;
+                            axios.get(url).then(function (res) {
+
+                                user = JSON.stringify(res.data.user)
+
+                                localStorage.setItem('user',user);
+
+                                console.log(localStorage.getItem('user'));
+
+                            })
+                            localStorage.lastname=response.data.token
+                            alert("登录成功")
+                            location.href='index'
+                        }
+                    })
             }
-        },
+
+
+        }
     })
+</script>
+
+<script>
 
 
 </script>
