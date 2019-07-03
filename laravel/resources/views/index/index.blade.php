@@ -1219,7 +1219,8 @@
                 window.location.href = _this.link;
             },
             product:function(id){
-               console.log(id)
+                localStorage.setItem('pid',id);
+                location.href='product'
             }
         },
     })
