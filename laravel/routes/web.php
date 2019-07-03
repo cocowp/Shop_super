@@ -25,5 +25,6 @@ Route::get('/buycar','BuycarController@index');
 Route::get('/regist','RegistController@index')->name('regist');
 Route::get('/user','IndexController@userinfo')->name('user');
 
+Route::get('/product','IndexController@product')->name('product');
 Route::get('/user_order', 'OrdersController@show')->name('uorder');
 

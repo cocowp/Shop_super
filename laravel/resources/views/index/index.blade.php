@@ -664,7 +664,7 @@
                     <div class="price">
                         <font>￥<span> @{{ das.prices }} </span></font> &nbsp; 26R
                     </div>
-                    <div class="img"><a href="#"><img :src="das.imgs" width="185" height="155" /></a></div>
+                    <div class="img"><a @click="product(das.id)"><img :src="das.imgs" width="185" height="155" /></a></div>
                 </li>
                 <li>
                     <div class="name"><a href="#">新鲜美味  进口美食</a></div>
@@ -1196,6 +1196,8 @@
         }
     })
 
+//    console.log(sessionStorage.getItem('user'))
+
     var vm = new Vue({
         el:'#hot',
         data:{
@@ -1211,12 +1213,15 @@
                 var url = 'http://www.sho.com/api/goods/hot?token='+localStorage.lastname;
                 axios.get(url).then(function (res) {
                     _this.hot = res.data.data;
-//                    console.log(vm.hot)
+                    console.log(vm.hot)
                 })
             },
             goLink:function () {
                 var _this = this;
                 window.location.href = _this.link;
+            },
+            product:function(id){
+               console.log(id)
             }
         },
     })

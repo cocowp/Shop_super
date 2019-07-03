@@ -21,4 +21,9 @@ class IndexController
     {
         return view('index.user');
     }
+
+    public function product()
+    {
+        return view('index.product');
+    }
 }
