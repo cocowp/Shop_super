@@ -11,18 +11,28 @@
     <![endif]-->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
-    <script type="text/javascript" src="{{ URL::asset('a/js/jquery-1.8.2.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('a/js/menu.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('a/js/jquery-1.8.2.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ URL::asset('a/js/select.js') }}"></script>
     <title>尤洪</title>
     <style>
-        .m_right ul li{
+        #firsta{
+            line-height: 40px;
+            border-bottom: 2px solid lightsteelblue;
+        }
+        .order{
+            line-height: 40px;
             border-bottom: 2px solid lightsteelblue;
         }
         .m_right ul li span{
             align-items: center;
         }
+        /*.ziorder li{*/
+        /*    line-height: 40px;*/
+        /*    font-size: 12px;*/
+        /*    border-bottom: none;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -246,24 +256,41 @@
         <div class="m_right">
             <p></p>
             <div class="mem_tit">我的订单</div>
-                <ul>
-                    <li>
+                <ul id="example">
+                    <li id="firsta">
                         <span style="padding: 30px 150px 30px 150px;font-size: 16px">订单号</span>
                         <span style="padding: 30px 10px 30px 30px;font-size: 16px">下单时间</span>
                         <span style="padding: 30px 0px 30px 80px;font-size: 16px">订单总金额</span>
                         <span style="padding: 30px 0px 30px 50px;font-size: 16px">订单状态</span>
                         <span style="padding: 30px 0px 30px 50px;font-size: 16px">操作</span>
                     </li>
-                    <div id="example">
-                        <li v-for="order in orders">
-                            <span style="padding: 30px 50px 30px 50px;font-size: 14px;color:#ff4e00" >@{{order.order_num}}</span>
-                            <span style="padding: 30px 0px 30px 0px;font-size: 14px">@{{ order.created_at }}</span>
-                            <span style="padding: 30px 0px 30px 52px;font-size: 14px">￥ @{{ order.total_amount }}</span>
-                            <span style="padding: 30px 0px 30px 66px;font-size: 14px" id="ostatus">@{{ order.shipping_status }}</span>
-                            <span style="padding: 30px 0px 30px 66px;font-size: 14px">
-                                <button v-on:click="edit()">取消</button>
+                    <div class="order"  v-for="order in orders">
+                        <li>
+                            <span style="padding: 0px 50px 0px 50px;font-size: 14px;color:#ff4e00" >@{{order.order_num}}</span>
+                            <span style="padding: 0px 0px 0px 0px;font-size: 14px">@{{ order.created_at }}</span>
+                            <span style="padding: 0px 0px 0px 52px;font-size: 14px">￥ @{{ order.total_amount }}</span>
+                            <span style="padding: 0px 0px 0px 66px;font-size: 14px">@{{ order.order_status }}</span>
+                            <span style="padding: 0px 0px 0px 66px;font-size: 14px">
+                                <button id="edit_order_status">
+                                    取消
+                                </button>
                             </span>
                         </li>
+                        <span class="ziorder" v-for="child in order.child">
+                            　
+                          <li>
+                            <b style="padding-left: 45px">子订单：</b><span style="padding: 0px 50px 0px 0px;font-size: 12px;color:#ff4e00" >@{{child.order_num}}</span>
+                            <span style="padding: 0px 0px 0px 0px;font-size: 14px">@{{ child.created_at }}</span>
+                            <span style="padding: 0px 0px 0px 52px;font-size: 14px">￥ @{{ child.total_amount }}</span>
+                            <span style="padding: 0px 0px 0px 66px;font-size: 14px">@{{ child.order_status }}</span>
+                              <span style="padding: 0px 0px 0px 66px;font-size: 14px">
+                                <button id="edit_order_status">
+                                    取消
+                                </button>
+                            </span>
+                          </li>
+                        </span>
+
                     </div>
                 </ul>
 {{--                <div id="example">--}}
@@ -277,6 +304,39 @@
 {{--                </div>--}}
         </div>
     </div>
+
+    <script type="text/javascript" src="{{ URL::asset('a/js/jq.js') }}"></script>
+    <script>
+        $(document).on('click','#edit_order_status',function () {
+            var old_status = $(this).parent('span').prev().text();
+
+            if(old_status != '用户取消'){
+                var str = $(this).parents('li').find('span').first().html();
+                $.ajax({
+                    url: 'http://www.sho.com/api/order/edit_order_status',
+                    type: 'POST',
+                    data:{
+                        token : localStorage.lastname,
+                        order_num : str,
+                        status : '-1'
+                    },
+                    success:function (res) {
+                        res = JSON.parse(res);
+                        if(res.code == 1000){
+                            alert('操作成功');
+                            location.reload();
+                        }else{
+                            alert('操作失败')
+                        }
+                    }
+                })
+            }else{
+                alert('当前订单已取消');
+            }
+
+        })
+
+    </script>
     <!--End 用户中心 End-->
     <!--Begin Footer Begin -->
     <div class="b_btm_bg b_btm_c">
@@ -404,43 +464,11 @@
                 var _this = this;
                 window.location.href = _this.link;
             },
-            edit:function(e){
-
-                console.log(e);return;
-                axios
-                    .post('http://www.sho.com/api/order/edit_order_status',{
-                        token : localStorage.lastname,
-                        order_num : this.order_num,
-                    })
-                    .then(function (response) {
-                        if(response.status == 200)
-                        {
-                            var url = 'http://www.sho.com/api/user?token='+response.data.token;
-                            axios.get(url).then(function (res) {
-
-                                user = JSON.stringify(res.data.user)
-
-                                localStorage.setItem('user',user);
-
-                                console.log(localStorage.getItem('user'));
-
-                            })
-                            localStorage.lastname=response.data.token
-                            alert("登录成功")
-                            location.href='index'
-                        }
-                    })
-            }
-
-
         }
     })
 </script>
 
-<script>
 
-
-</script>
 
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>

@@ -10,7 +10,6 @@ class Good extends Model
         'num','created_at','updated_at','deleted_at','pivot'
     ];
 
-
     public function attr(){
         return $this->hasMany('App\Model\Attr','classifyid','classify');
     }

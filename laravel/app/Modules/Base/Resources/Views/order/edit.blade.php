@@ -119,18 +119,16 @@
                 <table class="layui-table">
                     <tbody>
                     <tr>
-                        <td>haier海尔 BC-93TMPF 93升单门冰箱</div></td>
-                        <td>0.01</div></td>
-                        <td>984</div></td>
+                        <td>haier海尔 BC-93TMPF 93升单门冰箱</td>
+                        <td>0.01</td>
+                        <td>984</td>
                         <td>1</td>
-                        <td>删除</td>
                     </tr>
                     <tr>
-                        <td>haier海尔 BC-93TMPF 93升单门冰箱</div></td>
-                        <td>0.01</div></td>
-                        <td>984</div></td>
+                        <td>haier海尔 BC-93TMPF 93升单门冰箱</td>
+                        <td>0.01</td>
+                        <td>984</td>
                         <td>1</td>
-                        <td>删除</td>
                     </tr>
                     </tbody>
                 </table>

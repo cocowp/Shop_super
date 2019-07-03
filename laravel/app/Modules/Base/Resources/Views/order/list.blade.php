@@ -83,7 +83,6 @@
             <th>订单编号</th>
             <th>收货人</th>
             <th>总金额</th>
-            <th>应付金额</th>
             <th>订单状态</th>
             <th>支付状态</th>
             <th>发货状态</th>
@@ -101,8 +100,7 @@
                 </td>
                 <td>{{$order['order_num']}}</td>
                 <td>{{$order['consihnee']}}</td>
-                <td>{{$order['goods_price']}}</td>
-                <td>{{$order['order_amount']}}</td>
+                <td>{{$order['total_amount']}}</td>
                 <td>
                     {{$order['order_status']}}
                 </td>

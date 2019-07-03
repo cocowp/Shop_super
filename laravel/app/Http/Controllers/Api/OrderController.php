@@ -16,7 +16,6 @@ class OrderController extends Controller
     {
 
     }
-
     public function list(){
         $token = request('token');
         $user = JWTAuth::authenticate($token);
@@ -26,7 +25,7 @@ class OrderController extends Controller
         foreach ($order as $k => $v){
             $order_child = OrderModel::where([['user_id', $id],['parent_id',$v['id']]])->get();
             if(count($order_child)>0){
-                $order[$k]['child_child'] = $order_child;
+                $order[$k]['child'] = $order_child;
             }
         }
         if($order){
@@ -167,13 +166,17 @@ class OrderController extends Controller
         $where = [];
         $where[] = ['order_num', $order_num];
 
-        $data = OrderModel::with(['goods'])->where($where)->get();
-
-        if(count($data)>0){
-            return Controller::Message('1000','请求成功',$data);
-        }else{
-            return Controller::Message('1001','请求失败,（请获取当前登录用户的订单）');
+        $data = OrderModel::with(['goods'])->where($where)->first();
+        if(empty($data)){
+            return Controller::Message('1001','请求失败,（请获取正确的订单信息）');
         }
+
+        if($data['parent_id'] == 0){
+            unset($data['goods']);
+            $data['child'] =  OrderModel::where('parent_id',$data['id'])->get();
+        }
+
+        return Controller::Message('1000','请求成功',$data);
     }
 
     /**
@@ -202,6 +205,7 @@ class OrderController extends Controller
         $data = [
             'order_status' => $order_status
         ];
+
 
         $res = OrderModel::where($where)->update($data);
         if($res){
