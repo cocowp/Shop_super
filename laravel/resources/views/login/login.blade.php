@@ -127,9 +127,9 @@
 
                                 user = JSON.stringify(res.data.user)
 
-                                localStorage.setItem('user',user);
+                                sessionStorage.setItem('user',user);
 
-                                console.log(localStorage.getItem('user'));
+                                console.log(sessionStorage.getItem('user'));
 
                             })
                             localStorage.lastname=response.data.token
