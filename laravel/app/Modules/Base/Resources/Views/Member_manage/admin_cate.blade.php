@@ -11,7 +11,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="http://www.sho.com/start/css/x-admin.css" media="all">
+        <link rel="stylesheet" href="{{ URL::asset('static/css/x-admin.css')}}" media="all">
     </head>
     <body>
         <div class="x-nav">
@@ -38,8 +38,8 @@
            </form>
             
         </div>
-        <script src="http://www.supershop.com/start/lib/layui/layui.js" charset="utf-8"></script>
-        <script src="http://www.supershop.com/start/js/x-layui.js" charset="utf-8"></script>
+        <script src="{{ URL::asset('static/lib/layui/layui.js')}}" charset="utf-8"></script>
+        <script src="{{ URL::asset('static/js/x-layui.js')}}" charset="utf-8"></script>
         <script>
             layui.use(['element','laypage','layer','form'], function(){
                 $ = layui.jquery;//jquery
