@@ -36,5 +36,14 @@ class GoodsController extends Controller
         }
     }
 
+    public function fruit()
+    {
+        $data = GoodModel::where('alassify','378')->limit(5)->get();
+        if ($data) {
+            return Controller::Message('1000','请求成功'，$data);
+        }else{
+            return Controller::Message('1001','请求失败');
+        }
+    }
 
 }

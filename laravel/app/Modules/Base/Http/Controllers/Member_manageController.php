@@ -157,5 +157,9 @@ class Member_manageController extends Controller
         }
 
     }
+    public function admin_add()
+    {
+      return view('base::member_manage.admin_add');
+    }
 
 }

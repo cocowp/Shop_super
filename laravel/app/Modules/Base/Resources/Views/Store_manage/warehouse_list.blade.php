@@ -110,7 +110,7 @@
                 <?php } ?>
             </table>
 
-            <div id="page"></div>
+           
         </div>
         <script src="http://www.supershop.com/start/lib/layui/layui.js" charset="utf-8"></script>
         <script src="http://www.supershop.com/start/js/x-layui.js" charset="utf-8"></script>
