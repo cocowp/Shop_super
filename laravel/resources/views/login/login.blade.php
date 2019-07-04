@@ -120,27 +120,37 @@
                         password : this.pwd,
                     })
                     .then(function (response) {
-                        if(response.status == 200)
-                        {
                             var url = 'http://www.sho.com/api/user?token='+response.data.token;
                             axios.get(url).then(function (res) {
 
                                 user = JSON.stringify(res.data.user)
 
-                                localStorage.setItem('user',user) ;
+                                sessionStorage.setItem('user',user);
 
-//                                console.log(localStorage.getItem('user'))
+
+                                console.log(sessionStorage.getItem('user'));
 
                             })
-                            localStorage.lastname=response.data.token
-                            alert("登录成功")
+                            localStorage.lastname=response.data.token;
+//                            alert("登录成功")
                             location.href='index'
-                        }
+
                     })
             },
+
 
         }
 
     })
+
+    function sleep(numberMillis) {
+        var now = new Date();
+        var exitTime = now.getTime() + numberMillis;
+        while (true) {
+            now = new Date();
+            if (now.getTime() > exitTime)
+                return;
+        }
+    }
 
 </script>
