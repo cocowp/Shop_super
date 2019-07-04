@@ -654,7 +654,23 @@
 
      var vm = new Vue({
 
-
+        el : '#product',
+         data : {
+           pinfo : ''
+         },
+         mounted:function () {
+             this.getproduct();
+         },
+        methods : {
+            getproduct:function () {
+                var _this = this;
+                var url = 'http://www.sho.com/api/goods/product/'+localStorage.getItem('pid')+'?token='+localStorage.lastname;
+                axios.post(url).then(function (res) {
+                    _this.pinfo = res.data.data;
+                    console.log(vm.pinfo)
+                })
+            }
+        }
 
      })
 
