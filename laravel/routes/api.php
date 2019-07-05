@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         'prefix' => 'car'
     ], function ($router) {
         Route::get('/list', 'Api\CarController@list');
-
+        Route::post('/create','Api\CarController@create');
     });
 
 
