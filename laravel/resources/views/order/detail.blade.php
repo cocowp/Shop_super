@@ -23,7 +23,7 @@
         }
         .order{
             line-height: 40px;
-            /*border-bottom: 2px solid lightsteelblue;*/
+            border-bottom: 2px solid lightsteelblue;
         }
         .m_right ul li span{
             align-items: center;
@@ -269,9 +269,10 @@
                             <span style="padding: 0px 50px 0px 50px;font-size: 14px;color:#ff4e00" >@{{order.order_num}}</span>
                             <span style="padding: 0px 0px 0px 0px;font-size: 14px">@{{ order.created_at }}</span>
                             <span style="padding: 0px 0px 0px 52px;font-size: 14px">￥ @{{ order.total_amount }}</span>
-                            <span style="padding: 0px 0px 0px 66px;font-size: 14px" >@{{ order.order_status }}</span>
+                            <span style="padding: 0px 0px 0px 66px;font-size: 14px">@{{ order.order_status }}</span>
                             <span style="padding: 0px 0px 0px 66px;font-size: 14px">
-                                <button id="order_detail">详情</button>
+                                
+                                <button>详情</button>
                                 <button id="edit_order_status">
                                     取消
                                 </button>
@@ -280,7 +281,7 @@
                         <span class="ziorder" v-for="child in order.child">
                             　
                           <li>
-                            子订单：<span style="padding: 0px 50px 0px 0px;font-size: 12px;color:#ff4e00" >@{{child.order_num}}</span>
+                            <b style="padding-left: 45px">子订单：</b><span style="padding: 0px 50px 0px 0px;font-size: 12px;color:#ff4e00" >@{{child.order_num}}</span>
                             <span style="padding: 0px 0px 0px 0px;font-size: 14px">@{{ child.created_at }}</span>
                             <span style="padding: 0px 0px 0px 52px;font-size: 14px">￥ @{{ child.total_amount }}</span>
                             <span style="padding: 0px 0px 0px 66px;font-size: 14px">@{{ child.order_status }}</span>
@@ -335,10 +336,6 @@
                 alert('当前订单已取消');
             }
 
-        })
-        $(document).on('click','#order_detail',function () {
-            var num = $(this).parents('li').find('span').first().text();
-            location.href = "http://www.sho.com/order_detail?order_num=" +num;
         })
 
     </script>

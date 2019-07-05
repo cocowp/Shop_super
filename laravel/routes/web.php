@@ -27,4 +27,4 @@ Route::get('/user','IndexController@userinfo')->name('user');
 
 Route::get('/product','IndexController@product')->name('product');
 Route::get('/user_order', 'OrdersController@show')->name('uorder');
-
+Route::get('/order_detail', 'OrdersController@order_detail')->name('order_detail');

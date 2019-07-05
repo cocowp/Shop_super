@@ -35,14 +35,14 @@
 <div class="x-body">
     <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so layui-form-pane">
-            <input class="layui-input" placeholder="菜单名" name="name" id="name">
-            <button class="layui-btn"  lay-submit="" onclick="add_pmenu()"><i class="layui-icon"></i>增加顶级菜单</button>
+            <input class="layui-input" placeholder="属性名" name="name" id="name">
+            <button class="layui-btn"  lay-submit="" onclick="add_attr()"><i class="layui-icon"></i>增加属性</button>
         </form>
     </div>
     <blockquote class="layui-elem-quote">每个tr 上有两个属性 cate-id='1' 当前分类id fid='0' 父级id ,顶级分类为 0，有子分类的前面加收缩图标<i class="layui-icon x-show" status='true'>&#xe623;</i></blockquote>
     <xblock>
         {{--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>--}}
-        <span class="x-right" style="line-height:40px">共有数据：<?php echo count($data); ?> 条</span>
+        <span class="x-right" style="line-height:40px">共有数据：<?php echo count($attr); ?> 条</span>
     </xblock>
     <table class="layui-table layui-form">
         <thead>
@@ -51,15 +51,12 @@
                 <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th width="70">ID</th>
-            <th width="100">菜单名称</th>
-            <th width="100">创建时间</th>
-            <th width="100">修改时间</th>
-            <th width="40">父菜单id</th>
-            <th width="50">显示状态</th>
+            <th width="100">属性名称</th>
+            <th width="40">父属性id</th>
             <th width="250">操作</th>
         </thead>
         <tbody class="x-cate">
-        <?php foreach($data as $k => $v){ ?>
+        <?php foreach($attr as $k => $v){ ?>
         <tr cate-id="{{$v->id}}" fid="{{$v->parent_id}}" >
             <td>
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
@@ -69,18 +66,13 @@
                 {{str_repeat("___",$v->level)}}{{$v->name}}
                 <i class="layui-icon x-show" status='true'>&#xe623;</i>
             </td>
-            <td>{{$v->create_time}}</td>
-            <td>{{date('Y-m-d H:i:s', $v->save_time)}}</td>
             <td>{{$v->parent_id}}</td>
-            <td>
-                <?php if ($v->status==1){ echo '开启'; } else { echo '停用'; } ?>
-            </td>
             <td class="td-manage">
-                <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('菜单编辑','menu_edit?id=<?php echo $v->id ?>')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+                <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('属性编辑','attrvalue_edit?id=<?php echo $v->id ?>')" ><i class="layui-icon">&#xe642;</i>编辑</button>
                 @if($v->parent_id == 0)
-                    <button class="layui-btn layui-btn-warm layui-btn-xs"  onclick="x_admin_show('添加子菜单','menu_add?id=<?php echo $v->id ?>')" ><i class="layui-icon">&#xe642;</i>添加子菜单</button>
+                    <button class="layui-btn layui-btn-warm layui-btn-xs"  onclick="x_admin_show('给属性添加属性值','attrvalue_add?id=<?php echo $v->id ?>')" ><i class="layui-icon">&#xe642;</i>给添加属性值</button>
                 @endif
-                <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="menu_del('<?php echo $v->id ?>', '要删除的id')" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
+                <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="attrvalue_del('<?php echo $v->id ?>', '要删除的id')" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
 
             </td>
         </tr>
@@ -101,12 +93,12 @@
 
 
     //删除菜单
-    function menu_del(id,obj)
+    function attrvalue_del(id,obj)
     {
         layer.confirm("确认删除?",{icon:3,title: '正在进行删除操作'},function(index){
             layer.close(index);
             $.ajax({
-                url: '{{'menu_delOne'}}',
+                url: '{{'attrvalue_del'}}',
                 data: {id:id},
                 dataType: 'json',
                 type: 'get',
@@ -135,11 +127,11 @@
             });
         });
     }
-    function add_pmenu()
+    function add_attr()
     {
         var name = $("#name").val();
         $.ajax({
-            url: "{{'add_pmenu'}}",
+            url: "{{'add_attr'}}",
             data: {name:name,'_token':'{{csrf_token()}}'},
             dataType: 'json',
             type: 'post',
@@ -151,7 +143,7 @@
                 }
                 else
                 {
-                    layer.alert(e.msg);
+                    alert(e.msg);
                 }
             },
             error:function ()
