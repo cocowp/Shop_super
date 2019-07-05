@@ -208,7 +208,7 @@
     <div class="content">
 
         <div id="tsShopContainer">
-            <div id="tsImgS"><a href="{{URL::asset('a/images/p_big.jpg')}}" title="Images" class="MagicZoom" id="MagicZoom"><img src="{{URL::asset('a/images/p_big.jpg')}}" width="390" height="390" /></a></div>
+            <div id="tsImgS"><a href="{{URL::asset('a/images/p_big.jpg')}}" title="Images" class="MagicZoom" id="MagicZoom"><img :src="pinfo.imgs" width="390" height="390" /></a></div>
             <div id="tsPicContainer">
                 <div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div>
                 <div id="tsImgSCon">
@@ -234,21 +234,20 @@
                 “开业巨惠，北京专柜直供”，不光低价，“真”才靠谱！
             </div>
             <div class="des_price">
-            	本店价格：<b>@{{ pinfo.prices}} </b><br />
+            	本店价格：<b>@{{ pinfo.prices}}</b><br />
                 消费积分：<span>28R</span>
             </div>
             <div class="des_choice">
             	<span class="fl">型号选择：</span>
                 <ul v-for="v in pinfo.attr[1].child">
-                	<!-- <li class="checked">30ml<div class="ch_img"></div></li> -->
+                    <!-- <li class="checked">30ml<div class="ch_img"></div></li> -->
                     <li  @click="size(v.name)" >@{{v.name}}<div class="ch_img"></div></li>
-                  
                 </ul>
             </div>
             <div class="des_choice">
             	<span class="fl">颜色选择：</span>
-                <ul v-for="v in pinfo.attr[0].child">        
-                	<li  @click="color(v.name)">   @{{v.name}}<div class="ch_img"></div></li>
+                <ul v-for="v in pinfo.attr[0].child">
+                    <li  @click="color(v.name)">   @{{v.name}}<div class="ch_img"></div></li>
                 </ul>
             </div>
             <div class="des_share">
@@ -266,8 +265,7 @@
             </div>
             <div class="des_join">
             	<div class="j_nums">
-                	<input type="text"  name="" v-model="createModel.num" class="n_ipt" />
-
+                	<input type="text" value="1" name="" class="n_ipt" />
                     <input type="button" value="" onclick="addUpdate(jq(this));" class="n_btn_1" />
                     <input type="button" value="" onclick="jianUpdate(jq(this));" class="n_btn_2" />
                 </div>
@@ -538,13 +536,13 @@
                   <tr valign="top">
                     <td width="40"><img src="{{URL::asset('a/images/suc.png')}}" /></td>
                     <td>
-                    	<span style="color:#3e3e3e; font-size:18px; font-weight:bold;">宝贝已成功添加到购物车</span><br />
-                    	购物车共有1种宝贝（3件） &nbsp; &nbsp; 合计：@{{pinfo.prices * createModel.num}}元
+                        <span style="color:#3e3e3e; font-size:18px; font-weight:bold;">宝贝已成功添加到购物车</span><br />
+                        购物车共有1种宝贝（3件） &nbsp; &nbsp; 合计：@{{pinfo.prices * createModel.num}}元
                     </td>
                   </tr>
                   <tr height="50" valign="bottom">
                   	<td>&nbsp;</td>
-                    <td><a href="#" class="b_sure" @click="create">去购物车结算</a><a href="#" class="b_buy">继续购物</a></td>
+                    <td><a href="#" class="b_sure">去购物车结算</a><a href="#" class="b_buy">继续购物</a></td>
                   </tr>
                 </table>
                     
@@ -650,17 +648,18 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 <script>
+
      var vm = new Vue({
 
         el : '#product',
          data : {
            pinfo : '',
-           createModel:{
-           pinfo:'',
-           size:'',
-           color:'',
-           num:'1',
-           },
+             createModel:{
+                 pinfo:'',
+                 size:'',
+                 color:'',
+                 num:'1'
+             }
          },
          mounted:function () {
              this.getproduct();
@@ -669,37 +668,23 @@
             getproduct:function () {
                 var _this = this;
                 var url = 'http://www.sho.com/api/goods/product/'+localStorage.getItem('pid')+'?token='+localStorage.lastname;
+//                console.log(url);return
                 axios.get(url).then(function (res) {
                     _this.pinfo = res.data.data;
                     _this.createModel.pinfo= res.data.data.name;
-                    console.log(res.data.data.name)
+                    console.log(vm.pinfo)
                 })
             },
             size:function(val)
             {
-             this.createModel.size=val;
+                this.createModel.size=val;
             },
-             color:function(val)
+            color:function(val)
             {
-             this.createModel.color=val;
+                this.createModel.color=val;
             },
             create:function(){
-             var sku = this.createModel.color+this.createModel.size;
-             var goods_num = this.createModel.num;
-             var goods_id = localStorage.getItem('pid');
-
-                axios
-                    .post('http://www.sho.com/api/car/create',{
-                        token : localStorage.lastname,
-                        goods_id : goods_id,
-                        goods_num : goods_num,
-                        sku : sku,
-                    })
-                    .then(function (response) {
-                        console.log(response)
-
-                    })
-
+                console.log(this.createModel);
             }
         }
 

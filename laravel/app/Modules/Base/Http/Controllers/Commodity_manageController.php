@@ -41,7 +41,6 @@ class Commodity_manageController
    }
    public function commodity_list()
    {
-
        $data = DB::table('goods')->get();
 
        foreach ($data as $key => $val){
@@ -77,7 +76,10 @@ class Commodity_manageController
 
        $c_id = DB::table('goods')->where('id',$id)->pluck('classify')[0];
 
-       $data = DB::table('attr')->where('classifyid',$c_id)->get()->toArray();
+       $attr_id = DB::table('cat_attr')->where('cat_id',$c_id)->pluck('attr_id')[0];
+
+       $data = explode(',',$attr_id);
+//     print_r($data);die;
        foreach ($data as $key => $val){
            $data[$key]->fen = DB::table('attr')->where('parent_id',$val->parent_id)->get();
        }
