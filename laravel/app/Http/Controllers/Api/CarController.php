@@ -16,7 +16,8 @@ class CarController
          $user = JWTAuth::authenticate($token);
          $id = $user['id'];
 
-         $car = Car::with('sku')->where('user_id',$id)->get();
+         $car = Car::with(['sku','good'])->where('user_id',$id)->get();
+
          foreach ($car as $key => $value){
              $value['sku_name'] = $value['sku']['sku'];
          }

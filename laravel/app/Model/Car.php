@@ -16,4 +16,8 @@ class Car extends Model
     public function sku(){
         return $this->belongsTo('App\Model\Sku','sku_id');
     }
+
+    public function good(){
+        return $this->hasMany('App\Model\Good','id','goods_id');
+    }
 }
