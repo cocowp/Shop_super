@@ -165,23 +165,7 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>城市联动</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="city.html">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>三级地区联动</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
-                    <cite>菜单管理</cite>
                     <cite>管理员管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -214,8 +198,8 @@
             </li>
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont">&#xe6ce;</i>
-                    <cite>系统统计</cite>
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>菜单管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
@@ -225,22 +209,58 @@
                             <cite>菜单列表</cite>
                         </a>
                     </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6ce;</i>
+                    <cite>商品分类管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+
                     <li>
                         <a _href="{{'catlist'}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>商品分类管理</cite>
                         </a>
                     </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6ce;</i>
+                    <cite>商品管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
                     <li>
                         <a _href="{{'attribute_list'}}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>商品列表</cite>
                         </a>
                     </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe6ce;</i>
+                    <cite>属性管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
                     <li>
-                        <a _href="{{'admin_lists'}}">
+                        <a _href="{{'attr_list'}}">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>管理员列表</cite>
+                            <cite>属性列表</cite>
+                        </a>
+                    </li >
+                </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="{{'attrvalue_list'}}">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>属性值列表</cite>
                         </a>
                     </li >
                 </ul>
