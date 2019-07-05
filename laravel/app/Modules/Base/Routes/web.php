@@ -78,6 +78,18 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('attribute_list_attribute_manage','Commodity_manageController@attribute_list_attribute_manage');
 	Route::any('attribute_list_attribute_manage_lists','Commodity_manageController@attribute_list_attribute_manage_lists');
 	Route::any('attribute_list_attribute_manage_add','Commodity_manageController@attribute_list_attribute_manage_add');
+    //上边是有关商品的
+    //下边是有关属性的
+    Route::any('attr_list','AttrController@index');
+    Route::any('attr_add','AttrController@attr_add');
+    Route::any('attr_add_do','AttrController@attr_add_do');
+    Route::any('attrvalue_add','AttrController@attrvalue_add');
+    Route::any('attrvalue_add_do','AttrController@attrvalue_add_do');
+    Route::any('attrvalue_list','AttrController@attrvalue_list');
+    Route::any('attrvalue_del','AttrController@attrvalue_del');
+    Route::any('attrvalue_edit','AttrController@attrvalue_edit');
+    Route::any('attrvalue_edit_do','AttrController@attrvalue_edit_do');
+    Route::any('add_attr','AttrController@add_attr');
 
 
 	Route::any('index','IndexController@index');
