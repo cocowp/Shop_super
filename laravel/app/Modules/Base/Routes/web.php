@@ -109,10 +109,15 @@ Route::group(['prefix' => 'base'], function () {
 	Route::any('state_add','Order_manageController@state_add');
 	Route::any('state_list','Order_manageController@state_list');
 
-	Route::any('comment_audit','Service_manageController@comment_audit');
-	Route::any('comment_reply','Service_manageController@comment_reply');
-	Route::any('opinion_list','Service_manageController@opinion_list');
-	Route::any('opinion_reply','Service_manageController@opinion_reply');
+    //客服中心
+	Route::any('comment_audit','Service_manageController@comment_audit');//商品评论审核
+	Route::any('comment_reply','Service_manageController@comment_reply');//评论回复
+	Route::any('opinion_list','Service_manageController@opinion_list');//用户意见反馈列表
+	Route::any('opinion_reply','Service_manageController@opinion_reply');//用户意见回复
+    Route::any('reply','Service_manageController@reply');
+    Route::any('replyy','Service_manageController@replyy');
+    Route::any('reply_do','Service_manageController@reply_do');
+
 	Route::any('warehouse_add','Store_manageController@warehouse_add');
 	Route::any('warehouse_list','Store_manageController@warehouse_list');
 
@@ -120,4 +125,7 @@ Route::group(['prefix' => 'base'], function () {
     Route::any('admin_list','Member_manageController@admin_list');
     Route::any('admin_role','Member_manageController@admin_role');
     Route::any('admin_rule','Member_manageController@admin_rule');
+    Route::any('admin_add','Member_manageController@admin_add');//管理员添加
+
+
 });

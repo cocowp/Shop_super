@@ -115,12 +115,11 @@
         <span class="fr" id="users">
                 <span class="fl" v-if="trues">
                     你好，请<a href="{{route('login')}}">登录</a>
-                    &nbsp;   <a href="Regist.html" style="color:#ff4e00;">免费注册</a>
-                    &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
+                    &nbsp;   <a href="{{route('regist')}}" style="color:#ff4e00;">免费注册</a>
+                    &nbsp;|&nbsp;<a href="#">我的订单</a>
                 </span>
                 <span class="fl" v-else>
-                         <a href="#">@{{ uname.name }}</a>
-                    &nbsp;   <a href="Regist.html" style="color:#ff4e00;">免费注册</a>
+                         <a href="{{route('user')}}">@{{ uname.name }}</a>
                     &nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
                 </span>
 
@@ -132,7 +131,6 @@
                         <div class="ss_list_c">
                         	<ul>
                             	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
                             </ul>
                         </div>
                     </div>
@@ -666,7 +664,7 @@
                     <div class="price">
                         <font>￥<span> @{{ das.prices }} </span></font> &nbsp; 26R
                     </div>
-                    <div class="img"><a href="#"><img :src="das.imgs" width="185" height="155" /></a></div>
+                    <div class="img"><a @click="product(das.id)"><img :src="das.imgs" width="185" height="155" /></a></div>
                 </li>
                 <li>
                     <div class="name"><a href="#">新鲜美味  进口美食</a></div>
@@ -1174,7 +1172,6 @@
 
 </body>
 
-
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
@@ -1184,7 +1181,6 @@
 <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 <script>
 
-
     var alls = new Vue({
 
         el:"#users",
@@ -1193,10 +1189,12 @@
             uname : '',
         },
         mounted:function () {
-            this.uname = JSON.parse(localStorage.getItem('user'))
+            this.uname = JSON.parse(sessionStorage.getItem('user'))
             this.trues = false;
         }
     })
+
+//    console.log(sessionStorage.getItem('user'))
 
     var vm = new Vue({
         el:'#hot',
@@ -1213,12 +1211,16 @@
                 var url = 'http://www.sho.com/api/goods/hot?token='+localStorage.lastname;
                 axios.get(url).then(function (res) {
                     _this.hot = res.data.data;
-//                    console.log(vm.hot)
+                    console.log(vm.hot)
                 })
             },
             goLink:function () {
                 var _this = this;
                 window.location.href = _this.link;
+            },
+            product:function(id){
+                localStorage.setItem('pid',id);
+                location.href='product'
             }
         },
     })

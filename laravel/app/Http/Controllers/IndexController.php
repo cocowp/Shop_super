@@ -16,4 +16,14 @@ class IndexController
     {
         return view('index.index');
     }
+
+    public function userinfo()
+    {
+        return view('index.user');
+    }
+
+    public function product()
+    {
+        return view('index.product');
+    }
 }

@@ -11,7 +11,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="http://www.sho.com/start/css/x-admin.css" media="all">
+        <link rel="stylesheet" href="{{ URL::asset('static/css/x-admin.css')}}" media="all">
     </head>
     <body>
         <div class="x-nav">
@@ -42,7 +42,7 @@
                   </div>
                 </div> 
             </form>
-            <xblock><button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button><button class="layui-btn" onclick="admin_add('添加用户','admin-add.html','600','500')"><i class="layui-icon">&#xe608;</i>添加</button></xblock>
+            <xblock><button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button><button class="layui-btn" onclick="admin_add('添加用户','admin_add','600','500')"><i class="layui-icon">&#xe608;</i>添加</button></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -108,8 +108,8 @@
              
             </div>
         </div>
-        <script src="http://www.supershop.com/start/lib/layui/layui.js" charset="utf-8"></script>
-        <script src="http://www.supershop.com/start/js/x-layui.js" charset="utf-8"></script>
+        <script src="{{ URL::asset('static/lib/layui/layui.js')}}" charset="utf-8"></script>
+        <script src="{{ URL::asset('static/js/x-layui.js')}}" charset="utf-8"></script>
         <script>
             layui.use(['laydate','element','laypage','layer'], function(){
                 $ = layui.jquery;//jquery

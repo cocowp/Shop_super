@@ -151,6 +151,27 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
+                    <cite>仓库管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="warehouse_add ">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>仓库添加</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="warehouse_list ">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>仓库列表</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe723;</i>
                     <cite>分类管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
@@ -165,6 +186,42 @@
             </li>
             <li>
                 <a href="javascript:;">
+<<<<<<< HEAD
+=======
+                    <i class="iconfont">&#xe723;</i>
+                    <cite>客服中心</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="comment_audit">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>商品评论审核</cite>
+                        </a>
+                    </li >
+                     <li>
+                        <a _href="comment_reply">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>评论回复</cite>
+                        </a>
+                    </li >
+                     <li>
+                        <a _href="opinion_list">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>用户意见反馈列表</cite>
+                        </a>
+                    </li >
+                     <li>
+                        <a _href="opinion_reply">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>用户意见回复</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+>>>>>>> 8e05784360b9dceab8e871a3e271bd717f055e05
                     <i class="iconfont">&#xe726;</i>
                     <cite>管理员管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Model\Good as GoodModel;
 use App\Model\Order as OrderModel;
 use App\Model\Order_goods;
@@ -13,74 +14,126 @@ class OrderController extends Controller
 {
     public function index()
     {
-//
-    }
 
+    }
     public function list(){
         $token = request('token');
         $user = JWTAuth::authenticate($token);
         $id = $user['id'];
+        $order = OrderModel::where([['user_id', $id],['parent_id',0]])->get();
 
-        $order_list = OrderModel::where('user_id', $id)->get();
-        if($order_list){
-            return Controller::Message('1000','请求成功',$order_list);
+        foreach ($order as $k => $v){
+            $order_child = OrderModel::where([['user_id', $id],['parent_id',$v['id']]])->get();
+            if(count($order_child)>0){
+                $order[$k]['child'] = $order_child;
+            }
+        }
+        if($order){
+            return Controller::Message('1000','请求成功',$order);
         }else{
             return Controller::Message('1001','请求失败');
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public $status = 0;
     public function create()
     {
         $token = request('token');
         $user = JWTAuth::authenticate($token);
         $id = $user['id'];
 
-        $data = request()->toArray();
-        unset($data['token']);
+        $order = request()->only('consihnee','province','city','district','','address','mobile','goodsItems');
 
-        //拼接order数据
-        $order = $data;
+        $order = $this->order_goods($order);
+
         $order['user_id'] = $id;
-        $order['order_num'] = '1000'.date('YmdHis').$id.rand(10000000,99999999);
-        unset($order['goodsItems']);
-        //拼接order_goods数据
-        $order_goods = $data['goodsItems'];
+        $order['order_num'] = 'EA1000'.date('YmdHis').$id.rand(10000000,99999999);
 
-        //进行事务处理
-        DB::transaction(function () use($order,$order_goods) {
-            //订单表数据入库
-            $orderres = OrderModel::create($order);
+        $total_amount = $this->order_total_amount(json_decode($order['goodsItems'],true));
+        $order['total_amount'] = $total_amount;
 
-            //获取订单id并 把订单商品表入库
-            $order_id = $orderres['id'];
-            $order_goods = json_decode($order_goods, TRUE);
-            foreach($order_goods as $key => $value){
-                $order_goods[$key]['order_id'] = $order_id;
-                Order_goods::create($order_goods[$key]);
+        $res = $this->order_create($order);
+        if($res == 1){
+           return Controller::Message();
+        }else{
+           return Controller::Message('1001','请求失败');
+        }
+    }
 
-                //减少商品库存
-                $goods = GoodModel::find($order_goods[$key]['goods_id']);
-                if($goods->num - $order_goods[$key]['num'] >= 0){
-                    $goods -> num = $goods->num - $order_goods[$key]['num'];
-                    $goods->save();
+    public function order_goods($order){
+        $goods = json_decode($order['goodsItems'], TRUE);
+
+        foreach ( $goods as $key => $v){
+            $goods_info = GoodModel::find($v['goods_id']);
+            $goods[$key]['price'] = $goods_info['prices'];
+            $goods[$key]['name'] = $goods_info['name'];
+            $goods[$key]['img'] = $goods_info['imgs'];
+        }
+        $order['goodsItems'] = json_encode($goods);
+        return $order;
+    }
+
+    public function order_total_amount($goods){
+        $sum = 0;
+        foreach ($goods as $k => $v){
+            $sum += $v['num'] * $v['price'];
+        }
+        return $sum;
+    }
+
+    public function order_create($order){
+
+        $res = DB::transaction(function () use($order) {
+            $order_create_res = OrderModel::create($order);
+
+            $order['goodsItems'] = json_decode($order['goodsItems'],true);
+            $order_arr = [];
+            foreach($order['goodsItems'] as $k => $v){
+                $order_arr[$v['shop_id']][] = $v;
+            }
+
+            unset($order['goodsItems']);
+            if(count($order_arr) >= 2){
+//
+                foreach($order_arr as $key => $value){
+
+                    $order['order_num'] = 'EB1000'.date('YmdHis').$order['user_id'].rand(10000000,99999999);
+                    $order['parent_id'] = $order_create_res['id'];
+
+                    $order['total_amount'] = $this->order_total_amount($value);
+
+                    $child_order_create_res = OrderModel::create($order);
+
+                    foreach ($value as $k => $v){
+                        $v['order_id'] = $child_order_create_res['id'];
+                        Order_goods::create($v);
+
+                        $goods = GoodModel::find($v['goods_id']);
+
+                        if($goods->num - $v['num'] >= 0){
+                            $goods -> num = $goods->num - $v['num'];
+                            $goods->save();
+                        }else{
+                            Controller::Message('1001','请求失败');
+                        }
+                    }
                 }
             }
-            $this->status = 1;
+            else{
+                foreach($order['goodsItems'] as $key => $value){
+                    $order['goodsItems'][$key]['order_id'] = $order_create_res['id'];
 
-//            运行到此处数据库修改操作完成 返回请求送成功
+                    Order_goods::create($order['goodsItems'][$key]);
+
+                    $goods = GoodModel::find($order['goodsItems'][$key]['goods_id']);
+                    if($goods->num - $order['goodsItems'][$key]['num'] >= 0){
+                        $goods -> num = $goods->num - $order['goodsItems'][$key]['num'];
+                        $goods->save();
+                    }
+                }
+            }
+           return 1;
         });
-
-        if($this->status == 1){
-            return Controller::Message();
-        }else{
-            return Controller::Message('1001','请求失败');
-        }
+        return $res;
     }
 
     /**
@@ -104,22 +157,26 @@ class OrderController extends Controller
     // 通过订单编号来获取订单的详细信息
     public function show()
     {
-        $token = request('token');
-        $user = JWTAuth::authenticate($token);
-        $id = $user['id'];
+//        $token = request('token');
+//        $user = JWTAuth::authenticate($token);
+//        $id = $user['id'];
 
         $order_num = request('order_num');
 
         $where = [];
-        $where[] = ['user_id', '=', $id];
         $where[] = ['order_num', $order_num];
 
-        $data = OrderModel::with(['goods'])->where($where)->get();
-        if(count($data)>0){
-            return Controller::Message('1000','请求成功',$data);
-        }else{
-            return Controller::Message('1001','请求失败,（请获取当前登录用户的订单）');
+        $data = OrderModel::with(['goods'])->where($where)->first();
+        if(empty($data)){
+            return Controller::Message('1001','请求失败,（请获取正确的订单信息）');
         }
+
+        if($data['parent_id'] == 0){
+            unset($data['goods']);
+            $data['child'] =  OrderModel::where('parent_id',$data['id'])->get();
+        }
+
+        return Controller::Message('1000','请求成功',$data);
     }
 
     /**
@@ -148,6 +205,7 @@ class OrderController extends Controller
         $data = [
             'order_status' => $order_status
         ];
+
 
         $res = OrderModel::where($where)->update($data);
         if($res){
